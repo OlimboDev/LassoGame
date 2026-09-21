@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://t6jwbu62latl"]
+
+[ext_resource type="Script" uid="uid://8b478ehnub4y" path="res://lasso.gd" id="1_as1uq"]
+
+[node name="Lasso" type="Node2D" unique_id=1754463048]
+script = ExtResource("1_as1uq")

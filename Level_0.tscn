@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://xv1iao0dvt5q"]
+
+[ext_resource type="Texture2D" uid="uid://dhv72qn2v6qhf" path="res://images/ezgif-47a2334abfcf5af4.png" id="1_1doki"]
+[ext_resource type="Texture2D" uid="uid://b5hfcmr3vk0ai" path="res://images/geode.png" id="2_7r52p"]
+[ext_resource type="PackedScene" uid="uid://t6jwbu62latl" path="res://Lasso.tscn" id="3_05i8f"]
+[ext_resource type="PackedScene" uid="uid://ctstlrk3qkxq2" path="res://Player.tscn" id="4_7r52p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpj00"]
+size = Vector2(1180, 20)
+
+[node name="Node2D" type="Node2D" unique_id=1454209921]
+
+[node name="Sprites" type="Node2D" parent="." unique_id=1955153788]
+
+[node name="Sprite1" type="Sprite2D" parent="Sprites" unique_id=1738133859]
+position = Vector2(440, 440)
+scale = Vector2(0.26666668, 0.26666668)
+texture = ExtResource("1_1doki")
+
+[node name="Sprite2" type="Sprite2D" parent="Sprites" unique_id=1526492235]
+position = Vector2(604, 359)
+texture = ExtResource("2_7r52p")
+
+[node name="Lasso" parent="." unique_id=1754463048 instance=ExtResource("3_05i8f")]
+
+[node name="Player" parent="." unique_id=1203384558 instance=ExtResource("4_7r52p")]
+position = Vector2(173, 255)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1647961402]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=80618504]
+position = Vector2(575, 648)
+shape = SubResource("RectangleShape2D_lpj00")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D/CollisionShape2D" unique_id=1026048333]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -589.0
+offset_top = -10.0
+offset_right = 590.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
