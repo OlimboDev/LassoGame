@@ -9,5 +9,6 @@ func enter() -> void:
 		sprite.play("idle")
 
 func physics_update(_delta: float) -> void:
+	super.physics_update(_delta)
 	if Input.get_axis("moveLeft", "moveRight") != 0:
 		state_machine.change_state(walk_state)

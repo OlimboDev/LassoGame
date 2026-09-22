@@ -8,10 +8,10 @@ extends State
 @export var idle_timer_wait: float = 0.1
 var idle_timer: float = 0.0
 
-var speed_multiplier: float
+
 
 func enter() -> void:
-	speed_multiplier = 1
+	speed_multiplier = 1.0
 	idle_timer = 0.0
 	if sprite:
 		sprite.play("walk")

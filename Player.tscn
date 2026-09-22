@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cuogsl8xdmuk7" path="res://idle_state.gd" id="3_e80uo"]
 [ext_resource type="Script" uid="uid://bq8phyvnpopjm" path="res://walk_state.gd" id="4_cxr5p"]
 [ext_resource type="Script" uid="uid://bqyuuyepe645v" path="res://sprint_state.gd" id="6_tdg3f"]
+[ext_resource type="Script" uid="uid://shbdksebnhev" path="res://jump_state.gd" id="7_dtqjt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpjcp"]
 atlas = ExtResource("1_xhfnw")
@@ -272,6 +273,7 @@ initial_state = NodePath("idle_state")
 
 [node name="walk_state" type="Node2D" parent="StateMachine" unique_id=20261159]
 script = ExtResource("4_cxr5p")
+idle_timer_wait = null
 metadata/_custom_type_script = "uid://cqp1b82yxlase"
 
 [node name="idle_state" type="Node2D" parent="StateMachine" unique_id=534053262]
@@ -281,3 +283,7 @@ metadata/_custom_type_script = "uid://cqp1b82yxlase"
 [node name="sprint_state" type="Node2D" parent="StateMachine" unique_id=999156138]
 script = ExtResource("6_tdg3f")
 metadata/_custom_type_script = "uid://bq8phyvnpopjm"
+
+[node name="jump_state" type="Node2D" parent="StateMachine" unique_id=187135357]
+script = ExtResource("7_dtqjt")
+metadata/_custom_type_script = "uid://cqp1b82yxlase"
