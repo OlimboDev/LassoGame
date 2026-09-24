@@ -1,9 +1,19 @@
 class_name StateMachine
 extends Node2D
 
-@export var initial_state: Node2D
-var current_state: Node2D
-var previous_state: Node2D
+
+@export_category("States")
+@export_subgroup("setup")
+@export var idle_state: State
+@export var walk_state: State
+@export var sprint_state: State
+@export var jump_state: State
+@export var fall_state: State
+@export_subgroup("")
+@export var initial_state: State
+
+var current_state: State
+var previous_state: State
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for child in get_children():

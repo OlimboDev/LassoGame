@@ -4,9 +4,9 @@ extends CharacterBody2D
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -400.0
 
+@onready var state_machine: StateMachine = $StateMachine
+@onready var label: Label = $Camera2D/Label
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	label.text = state_machine.current_state.name
 	move_and_slide()

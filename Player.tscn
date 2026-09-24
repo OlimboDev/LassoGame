@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://bq8phyvnpopjm" path="res://walk_state.gd" id="4_cxr5p"]
 [ext_resource type="Script" uid="uid://bqyuuyepe645v" path="res://sprint_state.gd" id="6_tdg3f"]
 [ext_resource type="Script" uid="uid://shbdksebnhev" path="res://jump_state.gd" id="7_dtqjt"]
+[ext_resource type="Script" uid="uid://bv6vwxl4bgouy" path="res://air_state.gd" id="8_5ncpa"]
+[ext_resource type="Script" uid="uid://ba716qpuxlst3" path="res://fall_state.gd" id="9_wi0c6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpjcp"]
 atlas = ExtResource("1_xhfnw")
@@ -185,6 +187,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_d6rpx")
+}],
+"loop": 1,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kpjcp")
 }, {
 "duration": 1.0,
@@ -198,6 +208,14 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oudfo")
+}],
+"loop": 1,
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -256,24 +274,35 @@ size = Vector2(23, 39)
 [node name="Player" type="CharacterBody2D" unique_id=1203384558]
 script = ExtResource("1_e80uo")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=520641918]
+
+[node name="Label" type="Label" parent="Camera2D" unique_id=2140932550]
+offset_left = -572.0
+offset_top = -306.0
+offset_right = -481.0
+offset_bottom = -283.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1243751410]
 texture_filter = 1
 position = Vector2(2.75, 2.75)
 scale = Vector2(2.4791665, 2.4791665)
 sprite_frames = SubResource("SpriteFrames_s7wt3")
-animation = &"sprint"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1390292263]
 position = Vector2(1.5, 5.5)
 shape = SubResource("RectangleShape2D_i8c1s")
 
-[node name="StateMachine" type="Node2D" parent="." unique_id=708185042 node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node2D" parent="." unique_id=708185042 node_paths=PackedStringArray("idle_state", "walk_state", "sprint_state", "jump_state", "fall_state", "initial_state")]
 script = ExtResource("2_kne1u")
-initial_state = NodePath("idle_state")
+idle_state = NodePath("idle_state")
+walk_state = NodePath("walk_state")
+sprint_state = NodePath("sprint_state")
+jump_state = NodePath("jump_state")
+fall_state = NodePath("fall_state")
+initial_state = NodePath("fall_state")
 
 [node name="walk_state" type="Node2D" parent="StateMachine" unique_id=20261159]
 script = ExtResource("4_cxr5p")
-idle_timer_wait = null
 metadata/_custom_type_script = "uid://cqp1b82yxlase"
 
 [node name="idle_state" type="Node2D" parent="StateMachine" unique_id=534053262]
@@ -287,3 +316,11 @@ metadata/_custom_type_script = "uid://bq8phyvnpopjm"
 [node name="jump_state" type="Node2D" parent="StateMachine" unique_id=187135357]
 script = ExtResource("7_dtqjt")
 metadata/_custom_type_script = "uid://cqp1b82yxlase"
+
+[node name="air_state" type="Node2D" parent="StateMachine" unique_id=920802171]
+script = ExtResource("8_5ncpa")
+metadata/_custom_type_script = "uid://cqp1b82yxlase"
+
+[node name="fall_state" type="Node2D" parent="StateMachine" unique_id=749325418]
+script = ExtResource("9_wi0c6")
+metadata/_custom_type_script = "uid://bv6vwxl4bgouy"
