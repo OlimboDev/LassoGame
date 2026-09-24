@@ -12,5 +12,5 @@ func physics_update(_delta: float) -> void:
 	if player.is_on_floor() and player.velocity.y >= 0:
 			state_machine.change_state(state_machine.idle_state)
 			
-	if player.velocity.y > 0:
+	if player.velocity.y >= 0:
 		state_machine.change_state(state_machine.fall_state)

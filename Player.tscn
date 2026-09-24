@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://shbdksebnhev" path="res://jump_state.gd" id="7_dtqjt"]
 [ext_resource type="Script" uid="uid://bv6vwxl4bgouy" path="res://air_state.gd" id="8_5ncpa"]
 [ext_resource type="Script" uid="uid://ba716qpuxlst3" path="res://fall_state.gd" id="9_wi0c6"]
+[ext_resource type="Script" uid="uid://kn5gebd63w57" path="res://ground_state.gd" id="10_hp6x6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpjcp"]
 atlas = ExtResource("1_xhfnw")
@@ -324,3 +325,11 @@ metadata/_custom_type_script = "uid://cqp1b82yxlase"
 [node name="fall_state" type="Node2D" parent="StateMachine" unique_id=749325418]
 script = ExtResource("9_wi0c6")
 metadata/_custom_type_script = "uid://bv6vwxl4bgouy"
+
+[node name="ground_state" type="Node2D" parent="StateMachine" unique_id=1940072528]
+script = ExtResource("10_hp6x6")
+metadata/_custom_type_script = "uid://cqp1b82yxlase"
+
+[node name="idle_timer" type="Timer" parent="." unique_id=924473510]
+
+[node name="coyote_timer" type="Timer" parent="." unique_id=294358470]
