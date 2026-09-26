@@ -9,8 +9,7 @@ func enter() -> void:
 
 func physics_update(_delta: float) -> void:
 	super.physics_update(_delta)
-	if player.is_on_floor() and player.velocity.y >= 0:
-			state_machine.change_state(state_machine.idle_state)
-			
+	if changed(): return
+	
 	if player.velocity.y >= 0:
 		state_machine.change_state(state_machine.fall_state)

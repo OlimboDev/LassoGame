@@ -29,3 +29,7 @@ func move_horizontal(delta: float) -> void:
 		sprite.flip_h = direction < 0
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, player.DECELERATION * delta)
+
+
+func changed() -> bool:
+	return state_machine.current_state != self

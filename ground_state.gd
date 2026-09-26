@@ -18,6 +18,7 @@ func physics_update(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("jump"):
 		state_machine.change_state(state_machine.jump_state)
+		return
 
 func idle_check(delta: float):
 	if direction == 0:

@@ -7,6 +7,7 @@ func enter() -> void:
 
 func physics_update(delta: float) -> void:
 	super.physics_update(delta)
+	if changed(): return
 	idle_check(delta)
 	
 	if direction != 0 and Input.is_action_pressed("sprint"):
