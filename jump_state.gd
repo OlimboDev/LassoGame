@@ -13,3 +13,4 @@ func physics_update(_delta: float) -> void:
 	
 	if player.velocity.y >= 0:
 		state_machine.change_state(state_machine.fall_state)
+		return

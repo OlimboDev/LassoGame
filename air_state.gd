@@ -15,3 +15,4 @@ func physics_update(delta: float) -> void:
 
 	if player.is_on_floor():
 		state_machine.change_state(state_machine.idle_state)
+		return
