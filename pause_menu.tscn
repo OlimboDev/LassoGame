@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://dh1cot3ersxe0"]
+
+[ext_resource type="Theme" uid="uid://cek43ad06xar3" path="res://Theme.tres" id="1_nwcfo"]
+[ext_resource type="Script" uid="uid://dlsb5768kws5b" path="res://pause_menu.gd" id="2_05uyy"]
+
+[node name="PauseMenu" type="Control" unique_id=1936594356]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nwcfo")
+script = ExtResource("2_05uyy")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1863101586]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 51
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1635709198]
+layout_mode = 2
+text = "Top Left"
+
+[node name="Button" type="Button" parent="." unique_id=41577625]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "button"
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1219638889]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -302.0
+offset_right = 505.0
+grow_vertical = 0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" unique_id=1880269531]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" unique_id=392803391]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MarginContainer2/VBoxContainer/HBoxContainer" unique_id=707723296]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1636618433]
+layout_mode = 2
+text = "speed"
+
+[node name="Button" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1407044411]
+layout_mode = 2
+text = "button"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ctopugplgt48p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ddlh"]
+bg_color = Color(0, 0.7213036, 0.3081106, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="SettingMenu" type="Control" unique_id=340407111]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1120679334]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1661116852]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ddlh")
