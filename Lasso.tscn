@@ -4,3 +4,6 @@
 
 [node name="Lasso" type="Node2D" unique_id=1754463048]
 script = ExtResource("1_as1uq")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1709422548]
+width = 3.0

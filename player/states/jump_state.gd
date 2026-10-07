@@ -4,6 +4,7 @@ const JUMP_VELOCITY = -400.0
 
 func enter() -> void:
 	player.velocity.y = JUMP_VELOCITY
+	player.coyote_timer.stop()
 	sprite.play("jump")
 	
 

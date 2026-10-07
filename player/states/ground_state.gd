@@ -1,8 +1,6 @@
 class_name GroundState
 extends State
 
-@onready var coyote_timer: Timer = $"../../coyote_timer"
-
 @export var idle_timer_wait: float = 0.1
 var idle_timer: float = 0.0
 
@@ -11,8 +9,9 @@ func _ready() -> void:
 
 func physics_update(delta: float) -> void:
 	move_horizontal(delta)
-	
+
 	if not player.is_on_floor():
+		player.coyote_timer.start(player.COYOTE_TIME)
 		state_machine.change_state(state_machine.fall_state)
 		return
 		

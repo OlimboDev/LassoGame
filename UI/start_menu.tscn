@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dobmf08rovrdr"]
+[gd_scene format=3 uid="uid://cjutvph40bue4"]
 
-[ext_resource type="Script" path="res://start_menu.gd" id="1_ia0g5"]
+[ext_resource type="Script" uid="uid://dxx4qydpcvpom" path="res://start_menu.gd" id="1_ia0g5"]
 [ext_resource type="Theme" uid="uid://cek43ad06xar3" path="res://Theme.tres" id="1_jwbto"]
 
 [node name="StartMenu" type="Control" unique_id=865703726]
