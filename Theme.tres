@@ -1,4 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://cek43ad06xar3"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_der0y"]
+bg_color = Color(0.33894736, 0.67466444, 0.5650161, 1)
+
 [resource]
 Button/colors/font_color = Color(0.12535661, 0.9999998, 0.96052235, 1)
+Panel/styles/panel = SubResource("StyleBoxFlat_der0y")

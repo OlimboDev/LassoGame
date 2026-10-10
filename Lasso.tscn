@@ -7,3 +7,5 @@ script = ExtResource("1_as1uq")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1709422548]
 width = 3.0
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1037787743]
