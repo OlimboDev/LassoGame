@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dkqxbudh17ine"]
+
+[ext_resource type="Script" uid="uid://dwbcs7wot2q6q" path="res://BaseLevel.gd" id="1_bo3yr"]
+[ext_resource type="PackedScene" uid="uid://bsa342km6v7ol" path="res://UI/setting_menu.tscn" id="2_eesb3"]
+[ext_resource type="PackedScene" uid="uid://cbis2qhqoyx2d" path="res://pause_menu.tscn" id="3_3o4py"]
+
+[node name="BaseLevel" type="Node2D" unique_id=1604495942]
+process_mode = 1
+script = ExtResource("1_bo3yr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1979047013]
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1505617112 instance=ExtResource("3_3o4py")]
+visible = false
+
+[node name="SettingMenu" parent="CanvasLayer" unique_id=340407111 instance=ExtResource("2_eesb3")]
+visible = false
+custom_minimum_size = Vector2(1000, 500)

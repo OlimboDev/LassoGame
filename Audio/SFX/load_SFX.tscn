@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bb77exrpjpjsy"]
+
+[ext_resource type="Script" uid="uid://pwvnm1rj7ap6" path="res://Audio/SFX/load_SFX.gd" id="1_aar8p"]
+[ext_resource type="AudioStream" uid="uid://dqpio3v0gdpwg" path="res://Audio/SFX/Menu_Open_02.wav" id="1_uj08r"]
+[ext_resource type="AudioStream" uid="uid://da3vfinqyrsgr" path="res://Audio/SFX/Menu_Close_02.wav" id="2_aar8p"]
+[ext_resource type="AudioStream" uid="uid://df08h1ogoy10e" path="res://Audio/SFX/Pause_04.wav" id="4_fkjd1"]
+
+[node name="loadSFX" type="Node" unique_id=705612420]
+process_mode = 3
+script = ExtResource("1_aar8p")
+
+[node name="MenuOpen" type="AudioStreamPlayer" parent="." unique_id=737079925]
+stream = ExtResource("1_uj08r")
+bus = &"SFX"
+
+[node name="MenuClose" type="AudioStreamPlayer" parent="." unique_id=1353358]
+stream = ExtResource("2_aar8p")
+bus = &"SFX"
+
+[node name="SwitchTab" type="AudioStreamPlayer" parent="." unique_id=1957124905]
+stream = ExtResource("4_fkjd1")
+bus = &"SFX"

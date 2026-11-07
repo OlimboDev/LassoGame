@@ -1,19 +1,23 @@
-[gd_scene format=3 uid="uid://ctopugplgt48p"]
+[gd_scene format=3 uid="uid://bsa342km6v7ol"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ddlh"]
-bg_color = Color(0, 0.7213036, 0.3081106, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[ext_resource type="Theme" uid="uid://cek43ad06xar3" path="res://Theme.tres" id="1_3iptn"]
+[ext_resource type="Script" uid="uid://cqkrccj7eddxd" path="res://UI/setting_menu.gd" id="1_s8b5d"]
+[ext_resource type="StyleBox" uid="uid://cca2np3rh5sut" path="res://panel.tres" id="2_3vwur"]
 
-[node name="SettingMenu" type="Control" unique_id=340407111]
+[node name="SettingMenu" type="Control" unique_id=340407111 node_paths=PackedStringArray("music_slider", "SFX_Slider", "window_mode_button", "vsync_check", "resolution_button")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_s8b5d")
+music_slider = NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer/Container/MusicSlider")
+SFX_Slider = NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer/Container2/SFXSlider")
+window_mode_button = NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer/Container/WindowMode")
+vsync_check = NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer/Container2/VSync")
+resolution_button = NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer/Container3/Resolution")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1120679334]
 layout_mode = 1
@@ -29,4 +33,282 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Panel" type="Panel" parent="MarginContainer" unique_id=1661116852]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1ddlh")
+theme_override_styles/panel = ExtResource("2_3vwur")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=122449644]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=1303239255]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=2147288355]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_3iptn")
+theme_type_variation = &"HeaderLarge"
+text = "Settings"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=919733112]
+layout_mode = 2
+theme = ExtResource("1_3iptn")
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=851328554]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 2
+
+[node name="Audio" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer" unique_id=150813356]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Audio" unique_id=1735176534]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer" unique_id=615586916]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_3iptn")
+theme_type_variation = &"HeaderMedium"
+text = "Audio"
+
+[node name="Container" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer" unique_id=1969528745]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer/Container" unique_id=180415832]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_3iptn")
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer/Container" unique_id=1327784305]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_3iptn")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Container2" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer" unique_id=2003490370]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer/Container2" unique_id=222443868]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_3iptn")
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer/Container2" unique_id=272460609]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_3iptn")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Display" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer" unique_id=248514044]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display" unique_id=1237789447]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer" unique_id=1198234134]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_3iptn")
+theme_type_variation = &"HeaderMedium"
+text = "Left
+"
+
+[node name="Container" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer" unique_id=1243807803]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer/Container" unique_id=679596707]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_3iptn")
+text = "Window Mode"
+vertical_alignment = 1
+
+[node name="WindowMode" type="OptionButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer/Container" unique_id=1557402604]
+layout_mode = 2
+theme = ExtResource("1_3iptn")
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Borderless"
+popup/item_1/id = 1
+popup/item_2/text = "Fullscreen"
+popup/item_2/id = 2
+
+[node name="Container2" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer" unique_id=466295378]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer/Container2" unique_id=54109312]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_3iptn")
+text = "V-sync"
+vertical_alignment = 1
+
+[node name="VSync" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer/Container2" unique_id=858936279]
+layout_mode = 2
+theme = ExtResource("1_3iptn")
+
+[node name="Container3" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer" unique_id=2045570066]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer/Container3" unique_id=1396627372]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_3iptn")
+text = "Resolution"
+vertical_alignment = 1
+
+[node name="Resolution" type="OptionButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer/Container3" unique_id=15938455]
+layout_mode = 2
+theme = ExtResource("1_3iptn")
+selected = 2
+item_count = 6
+popup/item_0/text = "360p (640x360)"
+popup/item_0/id = 0
+popup/item_1/text = "480p (854x480)"
+popup/item_1/id = 1
+popup/item_2/text = "720p (1280x720)"
+popup/item_2/id = 2
+popup/item_3/text = "1080p (1920x1080)"
+popup/item_3/id = 3
+popup/item_4/text = "1440p (2560x1440)"
+popup/item_4/id = 4
+popup/item_5/text = "4K (3840x2160)"
+popup/item_5/id = 5
+
+[node name="Keybinds" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer" unique_id=1919730339]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds" unique_id=1786301354]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer" unique_id=74831061]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_3iptn")
+theme_type_variation = &"HeaderMedium"
+text = "Keybinds"
+
+[node name="Container" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer" unique_id=741447570]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container" unique_id=1422184650]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_3iptn")
+text = "Left"
+vertical_alignment = 1
+
+[node name="KeybindButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container" unique_id=682449700]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme = ExtResource("1_3iptn")
+theme_type_variation = &"SettingButton"
+text = "A"
+metadata/action = "moveLeft"
+
+[node name="Container2" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer" unique_id=287357733]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container2" unique_id=2111099650]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_3iptn")
+text = "Right"
+vertical_alignment = 1
+
+[node name="KeybindButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container2" unique_id=1372408292]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme = ExtResource("1_3iptn")
+theme_type_variation = &"SettingButton"
+text = "A"
+metadata/action = "moveRight"
+
+[node name="Container3" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer" unique_id=926664842]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container3" unique_id=1761510618]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_3iptn")
+text = "Jump"
+vertical_alignment = 1
+
+[node name="KeybindButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container3" unique_id=1685760412]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme = ExtResource("1_3iptn")
+theme_type_variation = &"SettingButton"
+text = "A"
+metadata/action = "jump"
+
+[node name="Container4" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer" unique_id=1986586232]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container4" unique_id=1159710199]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_3iptn")
+text = "Sprint"
+vertical_alignment = 1
+
+[node name="KeybindButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container4" unique_id=1691650569]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme = ExtResource("1_3iptn")
+theme_type_variation = &"SettingButton"
+text = "A"
+metadata/action = "sprint"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="tab_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer" to="." method="_on_tab_container_tab_changed"]
+[connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer/Container/WindowMode" to="." method="_on_window_mode_item_selected"]
+[connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer/Container2/VSync" to="." method="_on_v_sync_toggled"]
+[connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer/Container3/Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container/KeybindButton" to="." method="_on_keybind_button_pressed" binds= [NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container/KeybindButton")]]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container2/KeybindButton" to="." method="_on_keybind_button_pressed" binds= [NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container2/KeybindButton")]]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container3/KeybindButton" to="." method="_on_keybind_button_pressed" binds= [NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container3/KeybindButton")]]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container4/KeybindButton" to="." method="_on_keybind_button_pressed" binds= [NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container4/KeybindButton")]]

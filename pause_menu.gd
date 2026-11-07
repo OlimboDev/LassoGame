@@ -1,0 +1,18 @@
+extends Control
+@onready var setting_menu: Control = $"../SettingMenu"
+func _ready() -> void:
+	hide()
+	PauseHandler.paused.connect(_on_paused)
+
+func _on_paused() -> void:
+	visible = get_tree().paused
+
+func _on_resume_button_pressed() -> void:
+	PauseHandler._change_paused()
+
+func _on_settings_button_pressed() -> void:
+	setting_menu.visible = not setting_menu.visible
+
+func _on_exit_button_pressed() -> void:
+	PauseHandler._change_paused()
+	get_tree().change_scene_to_file("res://UI/start_menu.tscn")

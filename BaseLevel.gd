@@ -2,8 +2,11 @@ class_name BaseLevel
 extends Node2D
 
 @export var lasso: Lasso
+@onready var pause_menu: Control = $CanvasLayer/PauseMenu
 
 func _ready() -> void:
+	PauseHandler.enabled = true
+	get_tree().paused = false
 	lasso.loop_closed.connect(_on_lasso_closed)
 	lasso.loop_deleted.connect(_on_lasso_deleted)
 

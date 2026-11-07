@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 
 		if Input.is_action_pressed("mouseClick"):
 			var move_offset = current_mouse_pos - previous_mouse_pos
-			global_position += move_offset  # Move the parent node directly instead of offset points
+			global_position += move_offset
 			previous_mouse_pos = current_mouse_pos
 
 	if Input.is_action_just_pressed("ui_cancel"):

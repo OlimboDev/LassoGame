@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://cjutvph40bue4"]
 
-[ext_resource type="Script" uid="uid://dxx4qydpcvpom" path="res://start_menu.gd" id="1_ia0g5"]
+[ext_resource type="Script" uid="uid://dxx4qydpcvpom" path="res://UI/start_menu.gd" id="1_ia0g5"]
 [ext_resource type="Theme" uid="uid://cek43ad06xar3" path="res://Theme.tres" id="1_jwbto"]
+[ext_resource type="PackedScene" uid="uid://bsa342km6v7ol" path="res://UI/setting_menu.tscn" id="3_f14c5"]
+
+[sub_resource type="Theme" id="Theme_8ce3l"]
 
 [node name="StartMenu" type="Control" unique_id=865703726]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +23,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.48235294, 0.7372549, 0.43529412, 1)
+theme = SubResource("Theme_8ce3l")
+color = Color(0.12156863, 0.22745098, 0.16862746, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=233247622]
 custom_minimum_size = Vector2(200, 0)
@@ -42,24 +47,31 @@ alignment = 1
 layout_mode = 2
 theme = ExtResource("1_jwbto")
 theme_type_variation = &"HeaderLarge"
-text = "Best Game"
+text = "Dino Lasso Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StartButton" type="Button" parent="VBoxContainer" unique_id=250876528]
 layout_mode = 2
 theme = ExtResource("1_jwbto")
-text = "start Game"
+text = "Start game"
 
 [node name="SettingButton" type="Button" parent="VBoxContainer" unique_id=1161143851]
 layout_mode = 2
 theme = ExtResource("1_jwbto")
+theme_type_variation = &"SettingButton"
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=662448109]
 layout_mode = 2
 theme = ExtResource("1_jwbto")
+theme_type_variation = &"QuitButton"
 text = "Quit"
 
+[node name="SettingMenu" parent="." unique_id=340407111 instance=ExtResource("3_f14c5")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

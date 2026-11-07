@@ -15,10 +15,18 @@ run/main_scene="uid://cjutvph40bue4"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://dbf7e35mbowas"
+
+[autoload]
+
+PauseHandler="*uid://ddtcm3yw3w1ey"
+LoadSFX="*uid://bb77exrpjpjsy"
+
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [input]
 
