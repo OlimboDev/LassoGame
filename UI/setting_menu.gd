@@ -121,13 +121,13 @@ func _apply_resolution() -> void:
 func _on_visibility_changed() -> void:
 	
 		if not enabled:
-			LoadSFX.open_menu()
-			PauseHandler.enabled = false
+			LoadSFX.close_menu()
+			PauseHandler.enabled = true
 			enabled = true
 		else:
-			PauseHandler.enabled = true
+			LoadSFX.open_menu()
+			PauseHandler.enabled = false
 			enabled = false
-			LoadSFX.close_menu()
 			
 
 

@@ -12,7 +12,17 @@ extends CharacterBody2D
 
 @onready var coyote_timer: Timer = $coyote_timer
 var SPEED: float = WALK_SPEED
+var lassoMode = false
 
 func _physics_process(_delta: float) -> void:
 	label.text = "%s | SPEED: %s" % [state_machine.current_state.name, SPEED]
 	move_and_slide()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("lassoToggle"):
+		lassoMode = not lassoMode
+		lasso_mode()
+		
+func lasso_mode():
+	pass
+	

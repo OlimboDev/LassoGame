@@ -1,19 +1,20 @@
 [gd_scene format=3 uid="uid://wtwnniixnpjt"]
 
-[ext_resource type="Texture2D" uid="uid://dhv72qn2v6qhf" path="res://images/ezgif-47a2334abfcf5af4.png" id="1_1doki"]
-[ext_resource type="PackedScene" uid="uid://dkqxbudh17ine" path="res://base_level.tscn" id="1_der0y"]
-[ext_resource type="Texture2D" uid="uid://b5hfcmr3vk0ai" path="res://images/geode.png" id="2_7r52p"]
-[ext_resource type="PackedScene" uid="uid://t6jwbu62latl" path="res://Lasso.tscn" id="3_05i8f"]
-[ext_resource type="PackedScene" uid="uid://ctstlrk3qkxq2" path="res://Player.tscn" id="4_7r52p"]
-[ext_resource type="Texture2D" uid="uid://crj1slq7csgm0" path="res://tileset/nature-paltformer-tileset-16x16.png" id="5_05i8f"]
-[ext_resource type="Shader" uid="uid://bekbccag42i53" path="res://platform_blink.gdshader" id="7_8n6b1"]
-[ext_resource type="AudioStream" uid="uid://b11r7dmd1y6q4" path="res://Audio/Music/Bread.mp3" id="8_der0y"]
+[ext_resource type="PackedScene" uid="uid://dkqxbudh17ine" path="res://base_level.tscn" id="1_cg8v6"]
+[ext_resource type="Texture2D" uid="uid://dhv72qn2v6qhf" path="res://images/ezgif-47a2334abfcf5af4.png" id="2_j0sdw"]
+[ext_resource type="Texture2D" uid="uid://b5hfcmr3vk0ai" path="res://images/geode.png" id="3_jy02f"]
+[ext_resource type="Texture2D" uid="uid://crj1slq7csgm0" path="res://tileset/nature-paltformer-tileset-16x16.png" id="4_5dxk1"]
+[ext_resource type="PackedScene" uid="uid://ctstlrk3qkxq2" path="res://Player.tscn" id="5_kjd3d"]
+[ext_resource type="Shader" uid="uid://bekbccag42i53" path="res://platform_blink.gdshader" id="6_qdeet"]
+[ext_resource type="Texture2D" uid="uid://blg61nxuircvb" path="res://images/16-bit-spike-Sheet.png" id="7_j0sdw"]
+[ext_resource type="AudioStream" uid="uid://b11r7dmd1y6q4" path="res://Audio/Music/Bread.mp3" id="7_y72ps"]
+[ext_resource type="Texture2D" uid="uid://bgqn88dew2k13" path="res://images/flag animation.png" id="8_jy02f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0npxl"]
 size = Vector2(565, 47)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hhwt2"]
-shader = ExtResource("7_8n6b1")
+shader = ExtResource("6_qdeet")
 shader_parameter/blink_color = Color(0.1, 1, 0.2, 1)
 shader_parameter/speed = 4.0
 shader_parameter/strength = 0.0
@@ -30,8 +31,13 @@ load_path = "res://.godot/imported/nature-paltformer-tileset-16x16.png-e734c943d
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdhbi"]
 size = Vector2(46, 15)
 
-[node name="BaseLevel" unique_id=1604495942 node_paths=PackedStringArray("lasso") instance=ExtResource("1_der0y")]
-lasso = NodePath("Lasso")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja5ri"]
+size = Vector2(3.5, 8.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dxk1"]
+size = Vector2(19, 16.5625)
+
+[node name="BaseLevel" unique_id=1604495942 instance=ExtResource("1_cg8v6")]
 
 [node name="Sprites" type="Node2D" parent="." index="1" unique_id=549800861]
 
@@ -39,16 +45,14 @@ lasso = NodePath("Lasso")
 visible = false
 position = Vector2(440, 440)
 scale = Vector2(0.26666668, 0.26666668)
-texture = ExtResource("1_1doki")
+texture = ExtResource("2_j0sdw")
 
 [node name="Sprite2" type="Sprite2D" parent="Sprites" index="1" unique_id=691115147]
 visible = false
 position = Vector2(604, 359)
-texture = ExtResource("2_7r52p")
+texture = ExtResource("3_jy02f")
 
-[node name="Lasso" parent="." index="2" unique_id=1754463048 instance=ExtResource("3_05i8f")]
-
-[node name="Floor" type="StaticBody2D" parent="." index="3" unique_id=122433802]
+[node name="Floor" type="StaticBody2D" parent="." index="2" unique_id=122433802]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Floor" index="0" unique_id=1145199160]
 texture_filter = 1
@@ -64,7 +68,7 @@ offset_bottom = 574.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-texture = ExtResource("5_05i8f")
+texture = ExtResource("4_5dxk1")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
 patch_margin_top = 16
@@ -79,10 +83,10 @@ position = Vector2(171, 575)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_0npxl")
 
-[node name="Player" parent="." index="4" unique_id=1203384558 instance=ExtResource("4_7r52p")]
+[node name="Player" parent="." index="3" unique_id=1203384558 instance=ExtResource("5_kjd3d")]
 position = Vector2(173, 255)
 
-[node name="Platform" type="StaticBody2D" parent="." index="5" unique_id=894716059]
+[node name="Platform" type="StaticBody2D" parent="." index="4" unique_id=894716059 groups=["platform"]]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Platform" index="0" unique_id=1913608090]
 texture_filter = 1
@@ -112,7 +116,7 @@ position = Vector2(154, 482)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_qko81")
 
-[node name="Platform2" type="StaticBody2D" parent="." index="6" unique_id=566083570]
+[node name="Platform2" type="StaticBody2D" parent="." index="5" unique_id=566083570 groups=["platform"]]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Platform2" index="0" unique_id=1826356116]
 texture_filter = 1
@@ -142,7 +146,37 @@ position = Vector2(18, 413)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_fdhbi")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7" unique_id=820029084]
-stream = ExtResource("8_der0y")
-autoplay = true
+[node name="Spike" type="Area2D" parent="." index="6" unique_id=593610495 groups=["platform"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Spike" index="0" unique_id=1360030324]
+texture_filter = 1
+position = Vector2(-9.999998, 456.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_j0sdw")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike" index="1" unique_id=833100093]
+position = Vector2(-10.5, 467.125)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Flag" type="Area2D" parent="." index="7" unique_id=1859631692 groups=["platform"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Flag" index="0" unique_id=1653767055]
+texture_filter = 1
+position = Vector2(384, 351)
+scale = Vector2(0.60000014, 0.60000014)
+texture = ExtResource("8_jy02f")
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag" index="1" unique_id=1980023129]
+position = Vector2(375, 352)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_5dxk1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="8" unique_id=820029084]
+stream = ExtResource("7_y72ps")
 bus = &"Music"
+
+[connection signal="body_entered" from="Spike" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Flag" to="." method="_on_flag_body_entered"]

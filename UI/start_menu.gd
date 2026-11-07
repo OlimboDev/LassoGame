@@ -1,10 +1,12 @@
 extends Control
 
 @onready var setting_menu: Control = $SettingMenu
+@onready var continue_button: Button = $VBoxContainer/ContinueButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if not SaveManager.has_save():
+		continue_button.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,4 +22,8 @@ func _on_setting_button_pressed() -> void:
 	setting_menu.visible = not setting_menu.visible
 	
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Level_0.tscn")
+	SaveManager.new_game()
+
+
+func _on_continue_button_pressed() -> void:
+	SaveManager.continue_game()
