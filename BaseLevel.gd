@@ -3,6 +3,8 @@ extends Node2D
 
 @onready var lasso: Lasso = $Lasso
 @onready var restart_menu: Control = $CanvasLayer/restart_menu
+@onready var victory_menu: Control = $CanvasLayer/victory_menu
+
 
 var selected_blocks := {}
 
@@ -79,3 +81,6 @@ func _on_spike_body_entered(_body: Node2D) -> void:
 
 func _on_flag_body_entered(_body: Node2D) -> void:
 	SaveManager.save_game()
+	victory_menu.visible = true
+	get_tree().paused = true
+	

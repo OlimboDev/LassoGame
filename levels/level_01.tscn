@@ -87,6 +87,7 @@ shape = SubResource("RectangleShape2D_0npxl")
 position = Vector2(173, 255)
 
 [node name="Platform" type="StaticBody2D" parent="." index="4" unique_id=894716059 groups=["platform"]]
+position = Vector2(163, -4)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Platform" index="0" unique_id=1913608090]
 texture_filter = 1
@@ -96,10 +97,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 106.0
-offset_top = 465.0
-offset_right = 154.0
-offset_bottom = 481.0
+offset_left = 398.0
+offset_top = 451.0
+offset_right = 446.0
+offset_bottom = 467.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
@@ -112,7 +113,7 @@ axis_stretch_vertical = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" index="1" unique_id=1478575122]
-position = Vector2(154, 482)
+position = Vector2(446, 468)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_qko81")
 
@@ -126,10 +127,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = 396.0
-offset_right = 18.0
-offset_bottom = 412.0
+offset_left = -23.0
+offset_top = 265.0
+offset_right = 25.0
+offset_bottom = 281.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
@@ -142,42 +143,204 @@ axis_stretch_vertical = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" index="1" unique_id=2000984289]
-position = Vector2(18, 413)
+position = Vector2(25, 282)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_fdhbi")
 
-[node name="Spike" type="Area2D" parent="." index="6" unique_id=593610495 groups=["platform"]]
+[node name="Platform3" type="StaticBody2D" parent="." index="6" unique_id=249091728 groups=["platform"]]
+position = Vector2(-605, 19)
 
-[node name="Sprite2D" type="Sprite2D" parent="Spike" index="0" unique_id=1360030324]
+[node name="NinePatchRect" type="NinePatchRect" parent="Platform3" index="0" unique_id=446409028]
+texture_filter = 1
+material = SubResource("ShaderMaterial_hhwt2")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 195.0
+offset_top = 354.0
+offset_right = 243.0
+offset_bottom = 370.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = SubResource("CompressedTexture2D_icqnn")
+region_rect = Rect2(48, 0, 48, 16)
+patch_margin_left = 16
+patch_margin_right = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" index="1" unique_id=970515463]
+position = Vector2(243, 371)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_fdhbi")
+
+[node name="Spikes" type="Node" parent="." index="7" unique_id=470791340]
+
+[node name="Spike3" type="Area2D" parent="Spikes" index="0" unique_id=1912199728 groups=["platform"]]
+position = Vector2(-123, 50)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike3" index="0" unique_id=213359275]
 texture_filter = 1
 position = Vector2(-9.999998, 456.00003)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("7_j0sdw")
 hframes = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike" index="1" unique_id=833100093]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike3" index="1" unique_id=1660441467]
 position = Vector2(-10.5, 467.125)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ja5ri")
 
-[node name="Flag" type="Area2D" parent="." index="7" unique_id=1859631692 groups=["platform"]]
+[node name="Spike4" type="Area2D" parent="Spikes" index="1" unique_id=1242158774 groups=["platform"]]
+position = Vector2(-163, 50)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike4" index="0" unique_id=1439342081]
+texture_filter = 1
+position = Vector2(-9.999998, 456.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_j0sdw")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike4" index="1" unique_id=735499075]
+position = Vector2(-10.5, 467.125)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Spike5" type="Area2D" parent="Spikes" index="2" unique_id=1507329960 groups=["platform"]]
+position = Vector2(-203, 50)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike5" index="0" unique_id=157783322]
+texture_filter = 1
+position = Vector2(-9.999998, 456.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_j0sdw")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike5" index="1" unique_id=1855186148]
+position = Vector2(-10.5, 467.125)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Spike6" type="Area2D" parent="Spikes" index="3" unique_id=901441604 groups=["platform"]]
+position = Vector2(-243, 50)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike6" index="0" unique_id=1461771128]
+texture_filter = 1
+position = Vector2(-9.999998, 456.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_j0sdw")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike6" index="1" unique_id=1885603719]
+position = Vector2(-10.5, 467.125)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Spike7" type="Area2D" parent="Spikes" index="4" unique_id=1139546360 groups=["platform"]]
+position = Vector2(-283, 50)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike7" index="0" unique_id=1974566133]
+texture_filter = 1
+position = Vector2(-9.999998, 456.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_j0sdw")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike7" index="1" unique_id=998984418]
+position = Vector2(-10.5, 467.125)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Spike8" type="Area2D" parent="Spikes" index="5" unique_id=2006533117 groups=["platform"]]
+position = Vector2(-323, 50)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike8" index="0" unique_id=404100133]
+texture_filter = 1
+position = Vector2(-9.999998, 456.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_j0sdw")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike8" index="1" unique_id=1604308458]
+position = Vector2(-10.5, 467.125)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Spike9" type="Area2D" parent="Spikes" index="6" unique_id=723934445 groups=["platform"]]
+position = Vector2(-363, 50)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike9" index="0" unique_id=358899149]
+texture_filter = 1
+position = Vector2(-9.999998, 456.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_j0sdw")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike9" index="1" unique_id=252418251]
+position = Vector2(-10.5, 467.125)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Spike" type="Area2D" parent="Spikes" index="7" unique_id=593610495 groups=["platform"]]
+position = Vector2(-43, 50)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike" index="0" unique_id=1360030324]
+texture_filter = 1
+position = Vector2(-9.999998, 456.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_j0sdw")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike" index="1" unique_id=833100093]
+position = Vector2(-10.5, 467.125)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Spike2" type="Area2D" parent="Spikes" index="8" unique_id=573390305 groups=["platform"]]
+position = Vector2(-83, 50)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike2" index="0" unique_id=1985438717]
+texture_filter = 1
+position = Vector2(-9.999998, 456.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_j0sdw")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike2" index="1" unique_id=134438186]
+position = Vector2(-10.5, 467.125)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Flag" type="Area2D" parent="." index="8" unique_id=1859631692 groups=["platform"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="Flag" index="0" unique_id=1653767055]
 texture_filter = 1
-position = Vector2(384, 351)
+position = Vector2(-351, 357)
 scale = Vector2(0.60000014, 0.60000014)
 texture = ExtResource("8_jy02f")
 hframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flag" index="1" unique_id=1980023129]
-position = Vector2(375, 352)
+position = Vector2(-360, 358)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_5dxk1")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="8" unique_id=820029084]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="9" unique_id=820029084]
 stream = ExtResource("7_y72ps")
 autoplay = true
 bus = &"Music"
 
-[connection signal="body_entered" from="Spike" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike3" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike4" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike5" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike6" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike7" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike8" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike9" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike2" to="." method="_on_spike_body_entered"]
 [connection signal="body_entered" from="Flag" to="." method="_on_flag_body_entered"]
