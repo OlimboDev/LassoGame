@@ -43,7 +43,7 @@ theme_override_constants/separation = 20
 layout_mode = 2
 theme = ExtResource("2_jkmm4")
 theme_type_variation = &"HeaderLarge"
-text = "Pauze menu"
+text = "You Died!"
 
 [node name="RestartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1258495630]
 layout_mode = 2

@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dxx4qydpcvpom" path="res://UI/start_menu.gd" id="1_ia0g5"]
 [ext_resource type="Theme" uid="uid://cek43ad06xar3" path="res://Theme.tres" id="1_jwbto"]
+[ext_resource type="Texture2D" uid="uid://c13nd0082o6f8" path="res://images/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL2xhcmdlc3QtZGVzZXJ0LXdvcmxkLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODI4fX19.webp" id="2_neu3s"]
 [ext_resource type="PackedScene" uid="uid://bsa342km6v7ol" path="res://UI/setting_menu.tscn" id="3_f14c5"]
+[ext_resource type="Texture2D" uid="uid://cs6vkvq75i5s7" path="res://images/Untitled_Artwork.png" id="3_rcgl7"]
+[ext_resource type="AudioStream" uid="uid://kwsch15essyc" path="res://Audio/Music/Desert Music Instrumental - Arabic - Middle Eastern No Copyright Royalty Free Music.mp3" id="6_rcgl7"]
 
 [sub_resource type="Theme" id="Theme_8ce3l"]
 
@@ -26,48 +29,81 @@ grow_vertical = 2
 theme = SubResource("Theme_8ce3l")
 color = Color(0.12156863, 0.22745098, 0.16862746, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=233247622]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -96.0
-offset_right = 100.0
-offset_bottom = 96.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
-alignment = 1
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=465209484]
+layout_mode = 0
+offset_right = 1546.7626
+offset_bottom = 645.0
+texture = ExtResource("2_neu3s")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=400575730]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1445148042]
+layout_mode = 0
+offset_right = 1546.7626
+offset_bottom = 645.0
+texture = ExtResource("3_rcgl7")
+expand_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1150007470]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -169.5
+offset_right = 420.0
+offset_bottom = 169.5
+grow_vertical = 2
+offset_transform_enabled = true
+theme = ExtResource("1_jwbto")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=345194521]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=233247622]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=400575730]
 layout_mode = 2
 theme = ExtResource("1_jwbto")
 theme_type_variation = &"HeaderLarge"
-text = "Dino Lasso Game"
+text = "Spider Lasso Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=910523087]
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1730618627]
+layout_mode = 2
+theme = ExtResource("1_jwbto")
+theme_type_variation = &"TooltipLabel"
+theme_override_font_sizes/font_size = 10
+text = "(its still a dino since i don't have spider sprites)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=910523087]
 layout_mode = 2
 theme = ExtResource("1_jwbto")
 text = "Continue game"
 
-[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=250876528]
+[node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=250876528]
 layout_mode = 2
 theme = ExtResource("1_jwbto")
 text = "Start game"
 
-[node name="SettingButton" type="Button" parent="VBoxContainer" unique_id=1161143851]
+[node name="SettingButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1161143851]
 layout_mode = 2
 theme = ExtResource("1_jwbto")
 theme_type_variation = &"SettingButton"
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=662448109]
+[node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=662448109]
 layout_mode = 2
 theme = ExtResource("1_jwbto")
 theme_type_variation = &"QuitButton"
@@ -77,7 +113,12 @@ text = "Quit"
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="DesertMusicInstrumentalArabicMiddleEasternNoCopyrightRoyaltyFreeMusic" type="AudioStreamPlayer" parent="." unique_id=22067196]
+stream = ExtResource("6_rcgl7")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

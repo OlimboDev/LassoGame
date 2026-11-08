@@ -273,7 +273,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme = ExtResource("1_3iptn")
 theme_type_variation = &"SettingButton"
-text = "A"
+text = "D"
 metadata/action = "moveRight"
 
 [node name="Container3" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer" unique_id=926664842]
@@ -292,7 +292,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme = ExtResource("1_3iptn")
 theme_type_variation = &"SettingButton"
-text = "A"
+text = "Space"
 metadata/action = "jump"
 
 [node name="Container4" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer" unique_id=1986586232]
@@ -311,7 +311,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme = ExtResource("1_3iptn")
 theme_type_variation = &"SettingButton"
-text = "A"
+text = "Shift"
 metadata/action = "sprint"
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer" unique_id=738509430]
@@ -344,25 +344,6 @@ theme_type_variation = &"SettingButton"
 text = "C"
 metadata/action = "copy"
 
-[node name="Container7" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer" unique_id=639729132]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container7" unique_id=1523620419]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_vertical = 1
-theme = ExtResource("1_3iptn")
-text = "Paste"
-vertical_alignment = 1
-
-[node name="KeybindButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container7" unique_id=687590422]
-custom_minimum_size = Vector2(75, 0)
-layout_mode = 2
-theme = ExtResource("1_3iptn")
-theme_type_variation = &"SettingButton"
-text = "Enter"
-metadata/action = "paste"
-
 [node name="Container6" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer" unique_id=1772175119]
 layout_mode = 2
 
@@ -382,6 +363,25 @@ theme_type_variation = &"SettingButton"
 text = "X"
 metadata/action = "cancel"
 
+[node name="Container7" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer" unique_id=639729132]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container7" unique_id=1523620419]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_3iptn")
+text = "Paste"
+vertical_alignment = 1
+
+[node name="KeybindButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container7" unique_id=687590422]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme = ExtResource("1_3iptn")
+theme_type_variation = &"SettingButton"
+text = "Enter"
+metadata/action = "paste"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="tab_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer" to="." method="_on_tab_container_tab_changed"]
 [connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Display/VBoxContainer/Container/WindowMode" to="." method="_on_window_mode_item_selected"]
@@ -391,6 +391,6 @@ metadata/action = "cancel"
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container2/KeybindButton" to="." method="_on_keybind_button_pressed" binds= [NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container2/KeybindButton")]]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container3/KeybindButton" to="." method="_on_keybind_button_pressed" binds= [NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container3/KeybindButton")]]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container4/KeybindButton" to="." method="_on_keybind_button_pressed" binds= [NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container4/KeybindButton")]]
-[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container5/KeybindButton" to="." method="_on_keybind_button_pressed" binds= [NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container4/KeybindButton")]]
-[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container7/KeybindButton" to="." method="_on_keybind_button_pressed" binds= [NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container4/KeybindButton")]]
-[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container6/KeybindButton" to="." method="_on_keybind_button_pressed" binds= [NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container4/KeybindButton")]]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container5/KeybindButton" to="." method="_on_keybind_button_pressed" binds= [NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container5/KeybindButton")]]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container6/KeybindButton" to="." method="_on_keybind_button_pressed" binds= [NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container6/KeybindButton")]]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container7/KeybindButton" to="." method="_on_keybind_button_pressed" binds= [NodePath("MarginContainer/Panel/MarginContainer/VBoxContainer/TabContainer/Keybinds/VBoxContainer/Container7/KeybindButton")]]
