@@ -5,19 +5,43 @@ extends Node2D
 @onready var restart_menu: Control = $CanvasLayer/restart_menu
 @onready var victory_menu: Control = $CanvasLayer/victory_menu
 
-
 var selected_blocks := {}
 
 
 func _ready() -> void:
 	SaveManager.apply_save()
+	SaveManager.max_level = maxi(SaveManager.max_level, SaveManager.level_number())
 	PauseHandler.enabled = true
 	get_tree().paused = false
 
+	if SaveManager.restore_player_pos:
+		SaveManager.restore_player_pos = false
+		var player := get_node_or_null("Player")
+		if player:
+			player.global_position = SaveManager.home_player_pos
+
 	lasso.loop_closed.connect(_on_lasso_closed)
 	lasso.loop_deleted.connect(_on_lasso_deleted)
-	lasso.loop_accepted.connect(_clear_selection)
+	lasso.loop_accepted.connect(_on_lasso_accepted)
 	lasso.loop_moved.connect(_on_lasso_moved)
+
+
+func _process(_delta: float) -> void:
+	if not SaveManager.lasso_on:
+		return
+
+	if SaveManager.carried.is_empty() and Input.is_action_just_pressed("level_select"):
+		_on_lasso_deleted()
+		SaveManager.open_level_select_from_level()
+		return
+
+	if SaveManager.carried.is_empty():
+		return
+	var mouse_pos := get_global_mouse_position()
+	for item in SaveManager.carried:
+		item["block"].global_position = mouse_pos + item["offset"]
+	if Input.is_action_just_pressed("paste"):
+		_place_carried()
 
 
 func _get_platforms() -> Array:
@@ -72,6 +96,43 @@ func _clear_selection() -> void:
 	for platform in _get_platforms():
 		_set_highlight(platform, 0.0)
 
+func _on_lasso_accepted() -> void:
+	if SaveManager.visiting():
+		if selected_blocks.is_empty():
+			return
+		_take_selected()
+		SaveManager.return_home()
+	else:
+		_clear_selection()
+
+
+func _take_selected() -> void:
+	var center := Vector2.ZERO
+	for block in selected_blocks:
+		center += block.global_position
+	center /= selected_blocks.size()
+
+	for block in selected_blocks:
+		SaveManager.carried.append({"block": block, "offset": block.global_position - center})
+		if not block.is_in_group("spawned"):
+			SaveManager.mark_removed(str(get_path_to(block)))
+		remove_child(block)
+		SaveManager.add_child(block)
+		_set_highlight(block, 0.0)
+	selected_blocks.clear()
+	SaveManager.refresh_spawned()
+
+func _place_carried() -> void:
+	for item in SaveManager.carried:
+		var block: Node2D = item["block"]
+		var pos := block.global_position
+		SaveManager.remove_child(block)
+		add_child(block, true)
+		block.global_position = pos
+		block.add_to_group("spawned")
+	SaveManager.carried.clear()
+	SaveManager.save_game()
+
 
 func _on_spike_body_entered(_body: Node2D) -> void:
 	PauseHandler.enabled = false
@@ -80,7 +141,6 @@ func _on_spike_body_entered(_body: Node2D) -> void:
 
 
 func _on_flag_body_entered(_body: Node2D) -> void:
-	SaveManager.save_game()
+	SaveManager.complete_level()
 	victory_menu.visible = true
 	get_tree().paused = true
-	

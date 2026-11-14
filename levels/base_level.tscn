@@ -24,4 +24,14 @@ visible = false
 visible = false
 custom_minimum_size = Vector2(1000, 500)
 
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1096316724]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level X: _________"
+
 [node name="Lasso" parent="." unique_id=1754463048 instance=ExtResource("4_3o4py")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=323278221]
+anchor_mode = 0
+process_callback = 0
+position_smoothing_speed = 20.0

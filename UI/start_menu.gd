@@ -5,6 +5,7 @@ extends Control
 
 
 func _ready() -> void:
+	SaveManager.cancel_visit()
 	continue_button.visible = SaveManager.has_save()
 
 

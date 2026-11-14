@@ -22,6 +22,7 @@ size = Vector2(19, 16.5625)
 [node name="BaseLevel" unique_id=1604495942 instance=ExtResource("1_cg8v6")]
 
 [node name="Sprites" type="Node2D" parent="." index="1" unique_id=549800861]
+position = Vector2(400, 0)
 
 [node name="Sprite1" type="Sprite2D" parent="Sprites" index="0" unique_id=965882900]
 visible = false
@@ -35,6 +36,7 @@ position = Vector2(604, 359)
 texture = ExtResource("3_jy02f")
 
 [node name="Floor" type="StaticBody2D" parent="." index="2" unique_id=122433802]
+position = Vector2(400, 0)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Floor" index="0" unique_id=1145199160]
 texture_filter = 1
@@ -66,12 +68,12 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_0npxl")
 
 [node name="Player" parent="." index="3" unique_id=1203384558 instance=ExtResource("5_kjd3d")]
-position = Vector2(173, 255)
+position = Vector2(573, 255)
 
 [node name="Spikes" type="Node" parent="." index="4" unique_id=470791340]
 
 [node name="Spike3" type="Area2D" parent="Spikes" index="0" unique_id=1912199728 groups=["platform"]]
-position = Vector2(-123, 50)
+position = Vector2(277, 50)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike3" index="0" unique_id=213359275]
 texture_filter = 1
@@ -86,7 +88,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ja5ri")
 
 [node name="Spike4" type="Area2D" parent="Spikes" index="1" unique_id=1242158774 groups=["platform"]]
-position = Vector2(-163, 50)
+position = Vector2(237, 50)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike4" index="0" unique_id=1439342081]
 texture_filter = 1
@@ -101,7 +103,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ja5ri")
 
 [node name="Spike5" type="Area2D" parent="Spikes" index="2" unique_id=1507329960 groups=["platform"]]
-position = Vector2(-203, 50)
+position = Vector2(197, 50)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike5" index="0" unique_id=157783322]
 texture_filter = 1
@@ -116,7 +118,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ja5ri")
 
 [node name="Spike6" type="Area2D" parent="Spikes" index="3" unique_id=901441604 groups=["platform"]]
-position = Vector2(-243, 50)
+position = Vector2(157, 50)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike6" index="0" unique_id=1461771128]
 texture_filter = 1
@@ -131,7 +133,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ja5ri")
 
 [node name="Spike7" type="Area2D" parent="Spikes" index="4" unique_id=1139546360 groups=["platform"]]
-position = Vector2(-283, 50)
+position = Vector2(117, 50)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike7" index="0" unique_id=1974566133]
 texture_filter = 1
@@ -146,7 +148,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ja5ri")
 
 [node name="Spike8" type="Area2D" parent="Spikes" index="5" unique_id=2006533117 groups=["platform"]]
-position = Vector2(-323, 50)
+position = Vector2(77, 50)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike8" index="0" unique_id=404100133]
 texture_filter = 1
@@ -161,7 +163,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ja5ri")
 
 [node name="Spike9" type="Area2D" parent="Spikes" index="6" unique_id=723934445 groups=["platform"]]
-position = Vector2(-363, 50)
+position = Vector2(37, 50)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike9" index="0" unique_id=358899149]
 texture_filter = 1
@@ -176,7 +178,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ja5ri")
 
 [node name="Spike" type="Area2D" parent="Spikes" index="7" unique_id=593610495 groups=["platform"]]
-position = Vector2(-43, 50)
+position = Vector2(357, 50)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike" index="0" unique_id=1360030324]
 texture_filter = 1
@@ -191,7 +193,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ja5ri")
 
 [node name="Spike2" type="Area2D" parent="Spikes" index="8" unique_id=573390305 groups=["platform"]]
-position = Vector2(-83, 50)
+position = Vector2(317, 50)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike2" index="0" unique_id=1985438717]
 texture_filter = 1
@@ -206,6 +208,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ja5ri")
 
 [node name="Flag" type="Area2D" parent="." index="5" unique_id=1859631692 groups=["platform"]]
+position = Vector2(400, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Flag" index="0" unique_id=1653767055]
 texture_filter = 1
@@ -220,12 +223,28 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_5dxk1")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="6" unique_id=820029084]
+position = Vector2(400, 0)
 stream = ExtResource("7_y72ps")
 autoplay = true
 bus = &"Music"
 
 [node name="Platform" parent="." index="8" unique_id=1652075062 instance=ExtResource("9_jy02f")]
-position = Vector2(-196, 202)
+position = Vector2(167, 349)
+
+[node name="Platform2" parent="." index="9" unique_id=1791230765 instance=ExtResource("9_jy02f")]
+position = Vector2(280, 421)
+
+[node name="Platform3" parent="." index="10" unique_id=1749997496 instance=ExtResource("9_jy02f")]
+position = Vector2(412, 429)
+
+[node name="Platform4" parent="." index="11" unique_id=1553626446 instance=ExtResource("9_jy02f")]
+position = Vector2(93, 263)
+
+[node name="Platform5" parent="." index="12" unique_id=1889656170 instance=ExtResource("9_jy02f")]
+position = Vector2(231, 249)
+
+[node name="Platform6" parent="." index="13" unique_id=1595469272 instance=ExtResource("9_jy02f")]
+position = Vector2(324, 311)
 
 [connection signal="body_entered" from="Spikes/Spike3" to="." method="_on_spike_body_entered"]
 [connection signal="body_entered" from="Spikes/Spike4" to="." method="_on_spike_body_entered"]

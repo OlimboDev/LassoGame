@@ -283,11 +283,6 @@ metadata/_edit_use_anchors_ = true
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1798265882]
 follow_viewport_enabled = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=520641918]
-process_callback = 0
-position_smoothing_enabled = true
-position_smoothing_speed = 20.0
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1243751410]
 texture_filter = 1
 position = Vector2(2.75, 2.75)

@@ -18,5 +18,7 @@ func _apply_size() -> void:
 	var shape := RectangleShape2D.new()
 	shape.size = size
 	shape_node.shape = shape
+	shape_node.position = Vector2.ZERO
+	shape_node.scale = Vector2.ONE
 	nine_patch.size = size / nine_patch.scale
 	nine_patch.position = -size / 2.0

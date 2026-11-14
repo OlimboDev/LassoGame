@@ -4,9 +4,6 @@ extends Control
 @onready var button: Button = $Button
 @onready var completion_mark: TextureRect = $CompletionMark
 
-# Verander dit naar PackedScene zodat je .tscn bestanden kunt slepen
-@export var level_scene: PackedScene 
-
 @export var levelText: int = 0:
 	set(value):
 		levelText = value
@@ -36,7 +33,4 @@ func _update_status() -> void:
 		completion_mark.visible = unlocked
 
 func _on_button_pressed() -> void:
-	if level_scene:
-		get_tree().change_scene_to_packed(level_scene)
-	else:
-		push_error("No level found")
+	SaveManager.play_level(levelText)

@@ -16,6 +16,8 @@ var lassoMode = false
 
 func _physics_process(_delta: float) -> void:
 	label.text = "%s | SPEED: %s" % [state_machine.current_state.name, SPEED]
+	if SaveManager.lasso_on:
+		velocity = Vector2.ZERO
 	move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
