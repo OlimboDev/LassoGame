@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://b2i0iqslojk0q"]
+
+[ext_resource type="Theme" uid="uid://cek43ad06xar3" path="res://Theme.tres" id="1_q0b5w"]
+[ext_resource type="PackedScene" uid="uid://b08p5pw8xbr0r" path="res://UI/level_select_button.tscn" id="2_miaug"]
+[ext_resource type="PackedScene" uid="uid://wtwnniixnpjt" path="res://levels/level_01.tscn" id="3_uafa6"]
+
+[node name="LevelSelect" type="Control" unique_id=480872159]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1976598825]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q0b5w")
+color = Color(0.078431375, 0.12941177, 0.105882354, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1377900189]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1239921938]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1666123423]
+layout_mode = 2
+theme = ExtResource("1_q0b5w")
+theme_type_variation = &"HeaderLarge"
+text = "Level select"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1735144289]
+layout_mode = 2
+theme = ExtResource("1_q0b5w")
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=619125572]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+offset_transform_enabled = true
+columns = 7
+
+[node name="LevelSelectButton" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=582494931 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+level_scene = ExtResource("3_uafa6")
+levelText = 1
+
+[node name="LevelSelectButton2" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1738342470 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 2
+unlocked = false
+
+[node name="LevelSelectButton3" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=815533446 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 3
+unlocked = false
+
+[node name="LevelSelectButton4" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1618776222 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 4
+unlocked = false
+
+[node name="LevelSelectButton5" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1719957800 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 5
+unlocked = false
+
+[node name="LevelSelectButton6" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=2132295930 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 6
+unlocked = false
+
+[node name="LevelSelectButton7" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=976393633 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 7
+unlocked = false
+
+[node name="LevelSelectButton8" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=372337838 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 8
+unlocked = false
+
+[node name="LevelSelectButton9" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=116817205 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 9
+unlocked = false
+
+[node name="LevelSelectButton10" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=785355498 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 10
+unlocked = false
+
+[node name="LevelSelectButton11" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=2045323371 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 11
+unlocked = false
+
+[node name="LevelSelectButton12" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=480715068 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 12
+unlocked = false
+
+[node name="LevelSelectButton13" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=300960730 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 13
+unlocked = false
+
+[node name="LevelSelectButton14" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=869240235 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 14
+unlocked = false
+
+[node name="LevelSelectButton15" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=29611922 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 15
+unlocked = false
+
+[node name="LevelSelectButton16" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=2073619216 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 16
+unlocked = false
+
+[node name="LevelSelectButton17" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=229513493 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 17
+unlocked = false
+
+[node name="LevelSelectButton18" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=542642848 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 18
+unlocked = false
+
+[node name="LevelSelectButton19" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1557096840 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 19
+unlocked = false
+
+[node name="LevelSelectButton20" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=908526723 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 20
+unlocked = false
+
+[node name="LevelSelectButton21" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1221769130 instance=ExtResource("2_miaug")]
+layout_mode = 2
+offset_transform_enabled = true
+levelText = 21
+unlocked = false

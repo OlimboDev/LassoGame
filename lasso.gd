@@ -4,6 +4,7 @@ extends Node2D
 signal loop_closed
 signal loop_deleted
 signal loop_accepted
+signal loop_taken
 signal loop_moved(offset: Vector2)
 
 const MIN_POINT_DISTANCE: float = 5.0
@@ -20,9 +21,23 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("lasso_mode") and SaveManager.carried.is_empty():
+		SaveManager.lasso_on = not SaveManager.lasso_on
+		if not SaveManager.lasso_on:
+			_reset()
+			loop_deleted.emit()
+
+	visible = SaveManager.lasso_on
+
+	if not SaveManager.lasso_on or not SaveManager.carried.is_empty():
+		return
+
 	if Input.is_action_just_pressed("cancel"):
 		_reset()
 		loop_deleted.emit()
+	elif selected and Input.is_action_just_pressed("take"):
+		_reset()
+		loop_taken.emit()
 	elif selected and Input.is_action_just_pressed("paste"):
 		_reset()
 		loop_accepted.emit()

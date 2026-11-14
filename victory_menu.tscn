@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c52ybv0rpo5wa"]
 
-[ext_resource type="Script" uid="uid://da1j213d34kgf" path="res://restart_menu.gd" id="1_1sayv"]
+[ext_resource type="Script" uid="uid://da1j213d34kgf" path="res://restart_victory_menu.gd" id="1_1sayv"]
 [ext_resource type="Theme" uid="uid://cek43ad06xar3" path="res://Theme.tres" id="2_why5a"]
 
 [node name="victory_menu" type="Control" unique_id=168689646]
@@ -43,7 +43,7 @@ theme_override_constants/separation = 20
 layout_mode = 2
 theme = ExtResource("2_why5a")
 theme_type_variation = &"HeaderLarge"
-text = "You Win!"
+text = "Level Complete!"
 
 [node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1129925384]
 layout_mode = 2
@@ -52,9 +52,14 @@ theme_type_variation = &"TooltipLabel"
 text = "(Blocks saved)"
 horizontal_alignment = 1
 
-[node name="RestartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1258495630]
+[node name="NextButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1258495630]
 layout_mode = 2
-text = "Restart"
+text = "Next Level"
+
+[node name="SelectButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1519696973]
+layout_mode = 2
+theme_type_variation = &"SettingButton"
+text = "Select Level"
 
 [node name="ExitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1280068795]
 layout_mode = 2
@@ -62,5 +67,6 @@ theme = ExtResource("2_why5a")
 theme_type_variation = &"QuitButton"
 text = "Main Menu"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SelectButton" to="." method="_on_select_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

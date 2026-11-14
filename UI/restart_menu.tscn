@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dad1pqd5jvjsw"]
 
-[ext_resource type="Script" uid="uid://da1j213d34kgf" path="res://restart_menu.gd" id="1_h5rtl"]
+[ext_resource type="Script" uid="uid://da1j213d34kgf" path="res://restart_victory_menu.gd" id="1_h5rtl"]
 [ext_resource type="Theme" uid="uid://cek43ad06xar3" path="res://Theme.tres" id="2_jkmm4"]
 
 [node name="restart_menu" type="Control" unique_id=168689646]
@@ -49,6 +49,11 @@ text = "You Died!"
 layout_mode = 2
 text = "Restart"
 
+[node name="SelectButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1431934920]
+layout_mode = 2
+theme_type_variation = &"SettingButton"
+text = "Select Level"
+
 [node name="ExitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1280068795]
 layout_mode = 2
 theme = ExtResource("2_jkmm4")
@@ -56,4 +61,5 @@ theme_type_variation = &"QuitButton"
 text = "Main Menu"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SelectButton" to="." method="_on_select_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

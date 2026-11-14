@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://b08p5pw8xbr0r"]
+
+[ext_resource type="Theme" uid="uid://cek43ad06xar3" path="res://Theme.tres" id="1_kloqe"]
+[ext_resource type="Script" uid="uid://b02i6lv44byn" path="res://UI/level_select_button.gd" id="1_mrpfi"]
+[ext_resource type="Script" uid="uid://rsbur1d2118r" path="res://UI/completion_mark.gd" id="2_2l2g4"]
+[ext_resource type="Texture2D" uid="uid://bo3lu6logw70s" path="res://star.svg" id="2_prwof"]
+
+[node name="LevelSelectButton" type="Control" unique_id=582494931]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 3
+anchor_right = 0.065000005
+anchor_bottom = 0.116000004
+offset_right = 0.11999512
+offset_bottom = -0.16799927
+script = ExtResource("1_mrpfi")
+unlocked = true
+
+[node name="Button" type="Button" parent="." unique_id=2096486685]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kloqe")
+theme_type_variation = &"LevelSelectButton"
+theme_override_font_sizes/font_size = 36
+
+[node name="CompletionMark" type="TextureRect" parent="." unique_id=1861016873]
+custom_minimum_size = Vector2(-1, -1)
+layout_mode = 1
+offset_left = 89.0
+offset_top = 91.0
+offset_right = 139.0
+offset_bottom = 141.0
+texture = ExtResource("2_prwof")
+expand_mode = 1
+script = ExtResource("2_2l2g4")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
