@@ -105,7 +105,6 @@ func _on_lasso_accepted() -> void:
 	else:
 		_clear_selection()
 
-
 func _take_selected() -> void:
 	var center := Vector2.ZERO
 	for block in selected_blocks:
@@ -113,6 +112,10 @@ func _take_selected() -> void:
 	center /= selected_blocks.size()
 
 	for block in selected_blocks:
+		if not block.has_meta("origin"):
+			block.set_meta("origin", scene_file_path)
+			block.set_meta("origin_name", str(get_path_to(block)))
+
 		SaveManager.carried.append({"block": block, "offset": block.global_position - center})
 		if not block.is_in_group("spawned"):
 			SaveManager.mark_removed(str(get_path_to(block)))
@@ -120,6 +123,8 @@ func _take_selected() -> void:
 		SaveManager.add_child(block)
 		_set_highlight(block, 0.0)
 	selected_blocks.clear()
+
+	SaveManager.mark_recomplete(SaveManager.level_number())
 	SaveManager.refresh_spawned()
 
 func _place_carried() -> void:

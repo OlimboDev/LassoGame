@@ -5,6 +5,7 @@ const LEVEL_SELECT := "res://UI/level_select.tscn"
 
 var levels: Dictionary = {}
 var completed: Array = []
+var recomplete: Array = []
 var last_level: String = ""
 var max_level: int = 1
 
@@ -23,6 +24,7 @@ func _ready() -> void:
 	if typeof(data) == TYPE_DICTIONARY:
 		levels = data.get("levels", {})
 		completed = data.get("completed", [])
+		recomplete = data.get("recomplete", [])
 		last_level = data.get("last_level", "")
 		max_level = int(data.get("max_level", 1))
 
@@ -33,6 +35,34 @@ func has_save() -> bool:
 
 func level_number() -> int:
 	return get_tree().current_scene.scene_file_path.get_file().to_int()
+
+func level_state(n: int) -> int:
+	if _has_level(recomplete, n):
+		return 2
+	if _has_level(completed, n):
+		return 1
+	return 0
+
+func _has_level(list: Array, n: int) -> bool:
+	return list.any(func(c): return int(c) == n)
+
+
+func _without_level(list: Array, n: int) -> Array:
+	return list.filter(func(c): return int(c) != n)
+
+
+func mark_recomplete(n: int) -> void:
+	if not _has_level(recomplete, n):
+		recomplete.append(n)
+
+
+func complete_level() -> void:
+	var n := level_number()
+	if not _has_level(completed, n):
+		completed.append(n)
+	recomplete = _without_level(recomplete, n)
+	max_level = maxi(max_level, n + 1)
+	save_game()
 
 func visiting() -> bool:
 	return home_level != ""
@@ -76,7 +106,12 @@ func _spawned_list(level: Node) -> Array:
 	var list := []
 	for node in get_tree().get_nodes_in_group("spawned"):
 		if level.is_ancestor_of(node):
-			list.append([node.scene_file_path, node.global_position.x, node.global_position.y, node.size.x, node.size.y])
+			list.append([
+				node.scene_file_path,
+				node.global_position.x, node.global_position.y,
+				node.size.x, node.size.y,
+				node.get_meta("origin", ""), node.get_meta("origin_name", ""),
+			])
 	return list
 
 func refresh_spawned() -> void:
@@ -85,14 +120,47 @@ func refresh_spawned() -> void:
 	entry["spawned"] = _spawned_list(level)
 	levels[level.scene_file_path] = entry
 
+func reset_level(n: int) -> void:
+	var key := "res://levels/level_%02d.tscn" % n
 
-func complete_level() -> void:
-	var n := level_number()
-	if not completed.has(n):
-		completed.append(n)
-	max_level = maxi(max_level, n + 1)
-	save_game()
+	for i in range(carried.size() - 1, -1, -1):
+		var block: Node = carried[i]["block"]
+		if block.get_meta("origin", "") == key:
+			block.queue_free()
+			carried.remove_at(i)
 
+	for other_key in levels:
+		if other_key == key:
+			continue
+		var entry: Dictionary = levels[other_key]
+		var spawned: Array = entry.get("spawned", [])
+		var kept := spawned.filter(func(s): return not (s.size() >= 7 and s[5] == key))
+		if kept.size() != spawned.size():
+			entry["spawned"] = kept
+			mark_recomplete(other_key.get_file().to_int())
+
+	var own: Dictionary = levels.get(key, {})
+	for s in own.get("spawned", []):
+		if s.size() >= 7 and s[5] != "" and s[5] != key:
+			_return_block(s[5], s[6])
+
+	levels.erase(key)
+	recomplete = _without_level(recomplete, n)
+	completed = _without_level(completed, n)
+	_write_file()
+
+func _return_block(origin_key: String, origin_name: String) -> void:
+	var entry: Dictionary = levels.get(origin_key, {})
+	var removed: Array = entry.get("removed", [])
+	removed.erase(origin_name)
+	entry["removed"] = removed
+	var objects: Dictionary = entry.get("objects", {})
+	objects.erase(origin_name)
+	entry["objects"] = objects
+	levels[origin_key] = entry
+
+
+# --- Opslaan en laden ---
 
 func save_game() -> void:
 	var level := get_tree().current_scene
@@ -111,11 +179,15 @@ func save_game() -> void:
 	entry["spawned"] = _spawned_list(level)
 	levels[level.scene_file_path] = entry
 	last_level = level.scene_file_path
+	_write_file()
 
+
+func _write_file() -> void:
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify({
 		"levels": levels,
 		"completed": completed,
+		"recomplete": recomplete,
 		"last_level": last_level,
 		"max_level": max_level,
 	}))
@@ -142,6 +214,9 @@ func apply_save() -> void:
 			continue
 		var block: Node2D = load(s[0]).instantiate()
 		block.size = Vector2(s[3], s[4])
+		if s.size() >= 7:
+			block.set_meta("origin", s[5])
+			block.set_meta("origin_name", s[6])
 		block.add_to_group("spawned")
 		level.add_child(block, true)
 		block.global_position = Vector2(s[1], s[2])
@@ -168,5 +243,6 @@ func new_game() -> void:
 	max_level = 1
 	levels.clear()
 	completed.clear()
+	recomplete.clear()
 	last_level = ""
 	play_level(1)

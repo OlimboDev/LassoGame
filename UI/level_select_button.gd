@@ -1,6 +1,8 @@
 class_name LevelButton
 extends Control
 
+signal selected(level: int)
+
 @onready var button: Button = $Button
 @onready var completion_mark: TextureRect = $CompletionMark
 
@@ -15,16 +17,18 @@ extends Control
 		state = value
 		if completion_mark and completion_mark.has_method("update_svg_colors"):
 			completion_mark.update_svg_colors(state)
-			
+
 @export var unlocked: bool = false:
 	set(value):
 		unlocked = value
 		_update_status()
 
+
 func _ready() -> void:
 	button.text = str(levelText)
 	completion_mark.update_svg_colors(state)
 	_update_status()
+
 
 func _update_status() -> void:
 	if button:
@@ -32,5 +36,6 @@ func _update_status() -> void:
 	if completion_mark:
 		completion_mark.visible = unlocked
 
+
 func _on_button_pressed() -> void:
-	SaveManager.play_level(levelText)
+	selected.emit(levelText)

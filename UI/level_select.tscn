@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b2i0iqslojk0q"]
 
+[ext_resource type="Script" uid="uid://dfdpra2b00dip" path="res://UI/level_select.gd" id="1_miaug"]
 [ext_resource type="Theme" uid="uid://cek43ad06xar3" path="res://Theme.tres" id="1_q0b5w"]
 [ext_resource type="PackedScene" uid="uid://b08p5pw8xbr0r" path="res://UI/level_select_button.tscn" id="2_miaug"]
 
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_miaug")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1976598825]
 layout_mode = 1
