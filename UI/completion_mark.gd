@@ -1,33 +1,23 @@
 @tool
 extends TextureRect
 
+# border color, fill color
+const STATE_COLORS: Dictionary = {
+	0: ["#111111", "#333333"],  # Uncompleted
+	1: ["#b8860b", "#ffd700"],  # Completed
+	2: ["#555040", "#999070"],  # Needs to be completed again
+}
+
+
 func update_svg_colors(current_state: int) -> void:
-	var border_color = ""
-	var fill_color = ""
-	
-	match current_state:
-		0: # Uncompleted (Black / Dark Grey)
-			border_color = "#111111"
-			fill_color = "#333333"
-		1: # Completed (Gold / Bright Yellow)
-			border_color = "#b8860b"
-			fill_color = "#ffd700"
-		2: # Completed, but needs recompletion (Greyish Gold / Muted)
-			border_color = "#555040"
-			fill_color = "#999070"
-	
-	# Load and parse SVG
-	var file = FileAccess.open("res://star.svg", FileAccess.READ)
-	if not file:
+	var svg_text: String = FileAccess.get_file_as_string("res://star.svg")
+	if svg_text == "":
 		return
-		
-	var svg_text = file.get_as_text()
-	file.close()
-	
-	svg_text = svg_text.replace("var(--border)", border_color)
-	svg_text = svg_text.replace("var(--fill)", fill_color)
-	
-	var image = Image.new()
+
+	var colors: Array = STATE_COLORS[current_state]
+	svg_text = svg_text.replace("var(--border)", colors[0])
+	svg_text = svg_text.replace("var(--fill)", colors[1])
+
+	var image: Image = Image.new()
 	image.load_svg_from_string(svg_text)
-	
-	self.texture = ImageTexture.create_from_image(image)
+	texture = ImageTexture.create_from_image(image)

@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://cek43ad06xar3" path="res://Theme.tres" id="1_q0b5w"]
 [ext_resource type="PackedScene" uid="uid://b08p5pw8xbr0r" path="res://UI/level_select_button.tscn" id="2_miaug"]
 
-[node name="LevelSelect" type="Control" unique_id=480872159]
+[node name="LevelSelect" type="Control" unique_id=480872159 node_paths=PackedStringArray("back_button", "reset_button", "info_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_miaug")
+back_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/BackButton")
+reset_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ResetButton")
+info_label = NodePath("MarginContainer/VBoxContainer/InfoLabel")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1976598825]
 layout_mode = 1
@@ -179,3 +182,28 @@ layout_mode = 2
 offset_transform_enabled = true
 levelText = 21
 unlocked = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=545105164]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1675798157]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("1_q0b5w")
+theme_type_variation = &"SettingButton"
+text = "Back"
+
+[node name="ResetButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1703168480]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("1_q0b5w")
+theme_type_variation = &"SettingButton"
+text = "Reset Level"
+
+[node name="InfoLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1925541728]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]

@@ -22,4 +22,4 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_continue_button_pressed() -> void:
-	SaveManager.continue_game()
+	get_tree().change_scene_to_file("res://UI/level_select.tscn")

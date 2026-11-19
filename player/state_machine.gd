@@ -13,8 +13,7 @@ extends Node2D
 @export var initial_state: State
 
 var current_state: State
-#var previous_state: State
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	for child in get_children():
 		if child is State:
@@ -27,12 +26,10 @@ func _ready() -> void:
 func change_state(new_state: State) -> void:
 	if current_state:
 		current_state.exit()
-		#previous_state = current_state
 	current_state = new_state
 	current_state.enter()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if current_state:
 		current_state.update(delta)

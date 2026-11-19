@@ -6,6 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://cbis2qhqoyx2d" path="res://pause_menu.tscn" id="3_3o4py"]
 [ext_resource type="PackedScene" uid="uid://c52ybv0rpo5wa" path="res://victory_menu.tscn" id="3_u2wky"]
 [ext_resource type="PackedScene" uid="uid://t6jwbu62latl" path="res://Lasso.tscn" id="4_3o4py"]
+[ext_resource type="Theme" uid="uid://cek43ad06xar3" path="res://Theme.tres" id="6_maq6b"]
+[ext_resource type="Texture2D" uid="uid://bgqn88dew2k13" path="res://images/flag animation.png" id="8_0rg8l"]
+[ext_resource type="PackedScene" uid="uid://ctstlrk3qkxq2" path="res://Player.tscn" id="9_6w4ab"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpj00"]
+size = Vector2(1152, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_maq6b"]
+size = Vector2(200, 1048)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6w4ab"]
+size = Vector2(19, 16.5625)
 
 [node name="BaseLevel" type="Node2D" unique_id=1604495942]
 process_mode = 1
@@ -13,20 +25,37 @@ script = ExtResource("1_bo3yr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1979047013]
 
-[node name="restart_menu" parent="CanvasLayer" unique_id=168689646 instance=ExtResource("2_ftfrf")]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=881057317]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="victory_menu" parent="CanvasLayer" unique_id=921615234 instance=ExtResource("3_u2wky")]
+[node name="restart_menu" parent="CanvasLayer/MarginContainer" unique_id=168689646 instance=ExtResource("2_ftfrf")]
+layout_mode = 2
 
-[node name="PauseMenu" parent="CanvasLayer" unique_id=1505617112 instance=ExtResource("3_3o4py")]
+[node name="victory_menu" parent="CanvasLayer/MarginContainer" unique_id=921615234 instance=ExtResource("3_u2wky")]
+layout_mode = 2
+
+[node name="PauseMenu" parent="CanvasLayer/MarginContainer" unique_id=1505617112 instance=ExtResource("3_3o4py")]
 visible = false
+layout_mode = 2
 
-[node name="SettingMenu" parent="CanvasLayer" unique_id=340407111 instance=ExtResource("2_eesb3")]
+[node name="SettingMenu" parent="CanvasLayer/MarginContainer" unique_id=340407111 instance=ExtResource("2_eesb3")]
 visible = false
 custom_minimum_size = Vector2(1000, 500)
+layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=1096316724]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer" unique_id=1096316724]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("6_maq6b")
+theme_type_variation = &"GraphFrameTitleLabel"
 text = "Level X: _________"
 
 [node name="Lasso" parent="." unique_id=1754463048 instance=ExtResource("4_3o4py")]
@@ -35,3 +64,42 @@ text = "Level X: _________"
 anchor_mode = 0
 process_callback = 0
 position_smoothing_speed = 20.0
+
+[node name="Border" type="StaticBody2D" parent="." unique_id=744717766]
+collision_mask = 0
+
+[node name="Top" type="CollisionShape2D" parent="Border" unique_id=261315544]
+position = Vector2(576, -100)
+shape = SubResource("RectangleShape2D_lpj00")
+
+[node name="Bottom" type="CollisionShape2D" parent="Border" unique_id=522778971]
+position = Vector2(576, 748)
+shape = SubResource("RectangleShape2D_lpj00")
+
+[node name="Left" type="CollisionShape2D" parent="Border" unique_id=1859710908]
+position = Vector2(-100, 324)
+shape = SubResource("RectangleShape2D_maq6b")
+
+[node name="Right" type="CollisionShape2D" parent="Border" unique_id=23610262]
+position = Vector2(1252, 324)
+shape = SubResource("RectangleShape2D_maq6b")
+
+[node name="Flag" type="Area2D" parent="." unique_id=1568892423]
+position = Vector2(1114, 513)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Flag" unique_id=1390739728]
+texture_filter = 1
+scale = Vector2(0.60000014, 0.60000014)
+texture = ExtResource("8_0rg8l")
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag" unique_id=1024989364]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_6w4ab")
+
+[node name="Player" parent="." unique_id=1203384558 instance=ExtResource("9_6w4ab")]
+position = Vector2(76, 501)
+
+[connection signal="body_entered" from="Flag" to="." method="_on_flag_body_entered"]

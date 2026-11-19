@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c82w21uhbsafq" path="res://player/player.gd" id="1_e80uo"]
 [ext_resource type="Texture2D" uid="uid://bm0k17w5ed80k" path="res://images/spritesheet_dino_tard.png" id="1_xhfnw"]
 [ext_resource type="Script" uid="uid://bac7iyg5aqm2j" path="res://player/state_machine.gd" id="2_kne1u"]
+[ext_resource type="Theme" uid="uid://cek43ad06xar3" path="res://Theme.tres" id="2_wi0c6"]
 [ext_resource type="Script" uid="uid://cuogsl8xdmuk7" path="res://player/states/idle_state.gd" id="3_e80uo"]
 [ext_resource type="Script" uid="uid://bq8phyvnpopjm" path="res://player/states/walk_state.gd" id="4_cxr5p"]
 [ext_resource type="Script" uid="uid://bqyuuyepe645v" path="res://player/states/sprint_state.gd" id="6_tdg3f"]
@@ -271,14 +272,28 @@ animations = [{
 size = Vector2(23, 39)
 
 [node name="Player" type="CharacterBody2D" unique_id=1203384558]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_e80uo")
 
 [node name="Label" type="Label" parent="." unique_id=2140932550]
-offset_left = -572.0
-offset_top = -306.0
-offset_right = -481.0
-offset_bottom = -283.0
-metadata/_edit_use_anchors_ = true
+custom_minimum_size = Vector2(300, 300)
+custom_maximum_size = Vector2(300, 300)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4999999.5
+offset_top = -1022.0
+offset_right = 4999999.5
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_wi0c6")
+theme_type_variation = &"TooltipLabel"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1798265882]
 follow_viewport_enabled = true

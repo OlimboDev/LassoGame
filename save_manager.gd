@@ -1,7 +1,17 @@
 extends Node
 
-const SAVE_PATH := "user://save.json"
-const LEVEL_SELECT := "res://UI/level_select.tscn"
+const SAVE_PATH: String = "user://save.json"
+const LEVEL_SELECT: String = "res://UI/level_select.tscn"
+
+const SPAWNED_SCENE_PATH: int = 0
+const SPAWNED_X: int = 1
+const SPAWNED_Y: int = 2
+const SPAWNED_WIDTH: int = 3
+const SPAWNED_HEIGHT: int = 4
+const SPAWNED_ORIGIN_LEVEL: int = 5
+const SPAWNED_ORIGIN_NODE: int = 6
+const SPAWNED_BASIC_SIZE: int = 5
+const SPAWNED_FULL_SIZE: int = 7
 
 var levels: Dictionary = {}
 var completed: Array = []
@@ -13,14 +23,15 @@ var lasso_on: bool = false
 var carried: Array = []
 
 var home_level: String = ""
-var home_player_pos := Vector2.ZERO
+var home_player_pos: Vector2 = Vector2.ZERO
 var restore_player_pos: bool = false
 
 
 func _ready() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
 		return
-	var data = JSON.parse_string(FileAccess.get_file_as_string(SAVE_PATH))
+
+	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(SAVE_PATH))
 	if typeof(data) == TYPE_DICTIONARY:
 		levels = data.get("levels", {})
 		completed = data.get("completed", [])
@@ -32,61 +43,60 @@ func _ready() -> void:
 func has_save() -> bool:
 	return FileAccess.file_exists(SAVE_PATH)
 
-
 func level_number() -> int:
 	return get_tree().current_scene.scene_file_path.get_file().to_int()
 
-func level_state(n: int) -> int:
-	if _has_level(recomplete, n):
+func level_state(level_id: int) -> int:
+	if _has_level(recomplete, level_id):
 		return 2
-	if _has_level(completed, n):
+	if _has_level(completed, level_id):
 		return 1
 	return 0
 
-func _has_level(list: Array, n: int) -> bool:
-	return list.any(func(c): return int(c) == n)
 
-
-func _without_level(list: Array, n: int) -> Array:
-	return list.filter(func(c): return int(c) != n)
-
-
-func mark_recomplete(n: int) -> void:
-	if not _has_level(recomplete, n):
-		recomplete.append(n)
+func mark_recomplete(level_id: int) -> void:
+	if not _has_level(recomplete, level_id):
+		recomplete.append(level_id)
 
 
 func complete_level() -> void:
-	var n := level_number()
-	if not _has_level(completed, n):
-		completed.append(n)
-	recomplete = _without_level(recomplete, n)
-	max_level = maxi(max_level, n + 1)
+	var current_level: int = level_number()
+	if not _has_level(completed, current_level):
+		completed.append(current_level)
+	recomplete = _without_level(recomplete, current_level)
+	max_level = maxi(max_level, current_level + 1)
 	save_game()
+
+func _has_level(list: Array, level_id: int) -> bool:
+	return list.any(func(entry): return int(entry) == level_id)
+
+func _without_level(list: Array, level_id: int) -> Array:
+	return list.filter(func(entry): return int(entry) != level_id)
 
 func visiting() -> bool:
 	return home_level != ""
-
 
 func home_level_number() -> int:
 	return home_level.get_file().to_int()
 
 func open_level_select_from_level() -> void:
 	if not visiting():
-		var level := get_tree().current_scene
-		var player := level.get_node_or_null("Player")
+		var level: Node = get_tree().current_scene
+		var player: Node2D = level.get_node_or_null("Player")
 		if player:
 			home_player_pos = player.global_position
 		save_game()
 		home_level = level.scene_file_path
 	get_tree().change_scene_to_file(LEVEL_SELECT)
 
+
 func return_home() -> void:
-	var target := home_level
+	var target_level: String = home_level
 	home_level = ""
-	if target != "":
+	if target_level != "":
 		restore_player_pos = true
-		get_tree().change_scene_to_file(target)
+		get_tree().change_scene_to_file(target_level)
+
 
 func cancel_visit() -> void:
 	home_level = ""
@@ -94,16 +104,23 @@ func cancel_visit() -> void:
 	if carried.is_empty():
 		lasso_on = false
 
-func mark_removed(path: String) -> void:
-	var key := get_tree().current_scene.scene_file_path
-	var entry: Dictionary = levels.get(key, {})
+func mark_removed(node_path: String) -> void:
+	var level_path: String = get_tree().current_scene.scene_file_path
+	var entry: Dictionary = levels.get(level_path, {})
 	var removed: Array = entry.get("removed", [])
-	removed.append(path)
+	removed.append(node_path)
 	entry["removed"] = removed
-	levels[key] = entry
+	levels[level_path] = entry
+
+
+func refresh_spawned() -> void:
+	var level: Node = get_tree().current_scene
+	var entry: Dictionary = levels.get(level.scene_file_path, {})
+	entry["spawned"] = _spawned_list(level)
+	levels[level.scene_file_path] = entry
 
 func _spawned_list(level: Node) -> Array:
-	var list := []
+	var list: Array = []
 	for node in get_tree().get_nodes_in_group("spawned"):
 		if level.is_ancestor_of(node):
 			list.append([
@@ -114,61 +131,73 @@ func _spawned_list(level: Node) -> Array:
 			])
 	return list
 
-func refresh_spawned() -> void:
-	var level := get_tree().current_scene
-	var entry: Dictionary = levels.get(level.scene_file_path, {})
-	entry["spawned"] = _spawned_list(level)
-	levels[level.scene_file_path] = entry
+func reset_level(level_id: int) -> void:
+	var level_path: String = "res://levels/level_%02d.tscn" % level_id
 
-func reset_level(n: int) -> void:
-	var key := "res://levels/level_%02d.tscn" % n
+	_free_carried_blocks_from(level_path)
+	_remove_spawned_blocks_from(level_path)
+	_return_blocks_spawned_in(level_path)
 
-	for i in range(carried.size() - 1, -1, -1):
-		var block: Node = carried[i]["block"]
-		if block.get_meta("origin", "") == key:
-			block.queue_free()
-			carried.remove_at(i)
-
-	for other_key in levels:
-		if other_key == key:
-			continue
-		var entry: Dictionary = levels[other_key]
-		var spawned: Array = entry.get("spawned", [])
-		var kept := spawned.filter(func(s): return not (s.size() >= 7 and s[5] == key))
-		if kept.size() != spawned.size():
-			entry["spawned"] = kept
-			mark_recomplete(other_key.get_file().to_int())
-
-	var own: Dictionary = levels.get(key, {})
-	for s in own.get("spawned", []):
-		if s.size() >= 7 and s[5] != "" and s[5] != key:
-			_return_block(s[5], s[6])
-
-	levels.erase(key)
-	recomplete = _without_level(recomplete, n)
-	completed = _without_level(completed, n)
+	levels.erase(level_path)
+	recomplete = _without_level(recomplete, level_id)
+	completed = _without_level(completed, level_id)
 	_write_file()
 
-func _return_block(origin_key: String, origin_name: String) -> void:
-	var entry: Dictionary = levels.get(origin_key, {})
+func _free_carried_blocks_from(level_path: String) -> void:
+	for index in range(carried.size() - 1, -1, -1):
+		var block: Node = carried[index]["block"]
+		if block.get_meta("origin", "") == level_path:
+			block.queue_free()
+			carried.remove_at(index)
+
+func _remove_spawned_blocks_from(level_path: String) -> void:
+	for other_path in levels:
+		if other_path == level_path:
+			continue
+
+		var entry: Dictionary = levels[other_path]
+		var spawned: Array = entry.get("spawned", [])
+		var kept: Array = spawned.filter(func(block_data):
+			var has_origin: bool = block_data.size() >= SPAWNED_FULL_SIZE
+			return not (has_origin and block_data[SPAWNED_ORIGIN_LEVEL] == level_path)
+		)
+
+		if kept.size() != spawned.size():
+			entry["spawned"] = kept
+			mark_recomplete(other_path.get_file().to_int())
+
+func _return_blocks_spawned_in(level_path: String) -> void:
+	var entry: Dictionary = levels.get(level_path, {})
+	for block_data in entry.get("spawned", []):
+		if block_data.size() < SPAWNED_FULL_SIZE:
+			continue
+
+		var origin_level: String = block_data[SPAWNED_ORIGIN_LEVEL]
+		if origin_level != "" and origin_level != level_path:
+			_return_block(origin_level, block_data[SPAWNED_ORIGIN_NODE])
+
+
+func _return_block(origin_level: String, origin_node: String) -> void:
+	var entry: Dictionary = levels.get(origin_level, {})
+
 	var removed: Array = entry.get("removed", [])
-	removed.erase(origin_name)
+	removed.erase(origin_node)
 	entry["removed"] = removed
+
 	var objects: Dictionary = entry.get("objects", {})
-	objects.erase(origin_name)
+	objects.erase(origin_node)
 	entry["objects"] = objects
-	levels[origin_key] = entry
 
-
-# --- Opslaan en laden ---
+	levels[origin_level] = entry
 
 func save_game() -> void:
-	var level := get_tree().current_scene
-	var nodes := get_tree().get_nodes_in_group("persist")
+	var level: Node = get_tree().current_scene
+
+	var nodes: Array = get_tree().get_nodes_in_group("persist")
 	if nodes.is_empty():
 		nodes = get_tree().get_nodes_in_group("platform")
 
-	var objects := {}
+	var objects: Dictionary = {}
 	for node in nodes:
 		if not level.is_ancestor_of(node) or node.is_in_group("spawned"):
 			continue
@@ -183,7 +212,7 @@ func save_game() -> void:
 
 
 func _write_file() -> void:
-	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	var file: FileAccess = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify({
 		"levels": levels,
 		"completed": completed,
@@ -193,45 +222,51 @@ func _write_file() -> void:
 	}))
 	file.close()
 
-
 func apply_save() -> void:
-	var level := get_tree().current_scene
+	var level: Node = get_tree().current_scene
 	var saved: Dictionary = levels.get(level.scene_file_path, {})
 
-	var objects: Dictionary = saved.get("objects", {})
-	for path in objects:
-		var node := level.get_node_or_null(NodePath(path))
-		if node:
-			node.global_position = Vector2(objects[path][0], objects[path][1])
+	_restore_moved_objects(level, saved)
+	_delete_removed_objects(level, saved)
+	_create_spawned_blocks(level, saved)
 
-	for path in saved.get("removed", []):
-		var node := level.get_node_or_null(NodePath(path))
+
+func _restore_moved_objects(level: Node, saved: Dictionary) -> void:
+	var objects: Dictionary = saved.get("objects", {})
+	for node_path in objects:
+		var node: Node2D = level.get_node_or_null(NodePath(node_path))
+		if node:
+			node.global_position = Vector2(objects[node_path][0], objects[node_path][1])
+
+
+func _delete_removed_objects(level: Node, saved: Dictionary) -> void:
+	for node_path in saved.get("removed", []):
+		var node: Node = level.get_node_or_null(NodePath(node_path))
 		if node:
 			node.queue_free()
 
-	for s in saved.get("spawned", []):
-		if s.size() < 5:
+
+func _create_spawned_blocks(level: Node, saved: Dictionary) -> void:
+	for block_data in saved.get("spawned", []):
+		if block_data.size() < SPAWNED_BASIC_SIZE:
 			continue
-		var block: Node2D = load(s[0]).instantiate()
-		block.size = Vector2(s[3], s[4])
-		if s.size() >= 7:
-			block.set_meta("origin", s[5])
-			block.set_meta("origin_name", s[6])
+
+		var block: Node2D = load(block_data[SPAWNED_SCENE_PATH]).instantiate()
+		block.size = Vector2(block_data[SPAWNED_WIDTH], block_data[SPAWNED_HEIGHT])
+		if block_data.size() >= SPAWNED_FULL_SIZE:
+			block.set_meta("origin", block_data[SPAWNED_ORIGIN_LEVEL])
+			block.set_meta("origin_name", block_data[SPAWNED_ORIGIN_NODE])
 		block.add_to_group("spawned")
 		level.add_child(block, true)
-		block.global_position = Vector2(s[1], s[2])
+		block.global_position = Vector2(block_data[SPAWNED_X], block_data[SPAWNED_Y])
 
-
-func play_level(nummer: int) -> void:
-	var path := "res://levels/level_%02d.tscn" % nummer
+func play_level(level_id: int) -> void:
+	var path: String = "res://levels/level_%02d.tscn" % level_id
 	if ResourceLoader.exists(path):
 		get_tree().change_scene_to_file(path)
 
-
-func continue_game() -> void:
-	if last_level != "":
-		get_tree().change_scene_to_file(last_level)
-
+func is_current_level_completed() -> bool:
+	return level_state(level_number()) > 0
 
 func new_game() -> void:
 	for item in carried:

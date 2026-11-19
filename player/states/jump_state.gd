@@ -6,12 +6,11 @@ func enter() -> void:
 	player.velocity.y = JUMP_VELOCITY
 	player.coyote_timer.stop()
 	sprite.play("jump")
-	
 
-func physics_update(_delta: float) -> void:
-	super.physics_update(_delta)
+
+func physics_update(delta: float) -> void:
+	super.physics_update(delta)
 	if changed(): return
 	
 	if player.velocity.y >= 0:
 		state_machine.change_state(state_machine.fall_state)
-		return

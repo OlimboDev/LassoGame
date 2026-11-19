@@ -16,6 +16,7 @@ load_path = "res://.godot/imported/nature-paltformer-tileset-16x16.png-e734c943d
 size = Vector2(46, 15)
 
 [node name="Platform" type="StaticBody2D" unique_id=1652075062 groups=["platform"]]
+collision_mask = 0
 script = ExtResource("1_ru3vl")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=775824246]
@@ -26,20 +27,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 48.0
-offset_bottom = 16.0
+offset_left = -48.0
+offset_top = -17.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = SubResource("CompressedTexture2D_3yagm")
 region_rect = Rect2(48, 0, 48, 16)
 patch_margin_left = 16
 patch_margin_right = 16
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1770117241]
-position = Vector2(48, 17)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_qko81")

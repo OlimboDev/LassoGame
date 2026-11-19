@@ -1,0 +1,219 @@
+[gd_scene format=3 uid="uid://rv6voaqbqukf"]
+
+[ext_resource type="PackedScene" uid="uid://dkqxbudh17ine" path="res://levels/base_level.tscn" id="1_85vqe"]
+[ext_resource type="Texture2D" uid="uid://blg61nxuircvb" path="res://images/16-bit-spike-Sheet.png" id="2_ngl01"]
+[ext_resource type="Texture2D" uid="uid://crj1slq7csgm0" path="res://tileset/nature-paltformer-tileset-16x16.png" id="2_p0vsl"]
+[ext_resource type="AudioStream" uid="uid://b11r7dmd1y6q4" path="res://Audio/Music/Bread.mp3" id="3_ngl01"]
+[ext_resource type="PackedScene" uid="uid://h1e4dfcb0kql" path="res://tileset/platform.tscn" id="4_wq170"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja5ri"]
+size = Vector2(3.5, 8.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gia0r"]
+size = Vector2(219, 60)
+
+[node name="BaseLevel" unique_id=1604495942 instance=ExtResource("1_85vqe")]
+
+[node name="Label" parent="CanvasLayer/MarginContainer" parent_id_path=PackedInt32Array(881057317) index="4" unique_id=1096316724]
+text = "Level 3: Lasso tool"
+
+[node name="Spikes" type="Node" parent="." index="1" unique_id=470791340]
+
+[node name="Spike" type="Area2D" parent="Spikes" index="0" unique_id=1912199728]
+position = Vector2(456, 628)
+collision_layer = 4
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike" index="0" unique_id=213359275]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_ngl01")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike" index="1" unique_id=1660441467]
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Spike2" type="Area2D" parent="Spikes" index="1" unique_id=1994718511]
+position = Vector2(496, 628)
+collision_layer = 4
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike2" index="0" unique_id=401507228]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_ngl01")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike2" index="1" unique_id=847304779]
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Spike3" type="Area2D" parent="Spikes" index="2" unique_id=1313167888]
+position = Vector2(536, 628)
+collision_layer = 4
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike3" index="0" unique_id=473180277]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_ngl01")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike3" index="1" unique_id=1280858591]
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Spike4" type="Area2D" parent="Spikes" index="3" unique_id=1252970164]
+position = Vector2(576, 628)
+collision_layer = 4
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike4" index="0" unique_id=585669530]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_ngl01")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike4" index="1" unique_id=211669204]
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Spike5" type="Area2D" parent="Spikes" index="4" unique_id=1216465501]
+position = Vector2(616, 628)
+collision_layer = 4
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike5" index="0" unique_id=1156503230]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_ngl01")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike5" index="1" unique_id=533875006]
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Spike6" type="Area2D" parent="Spikes" index="5" unique_id=1972858820]
+position = Vector2(656, 628)
+collision_layer = 4
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike6" index="0" unique_id=1204199176]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_ngl01")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike6" index="1" unique_id=688572849]
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="Spike7" type="Area2D" parent="Spikes" index="6" unique_id=482802142]
+position = Vector2(696, 628)
+collision_layer = 4
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike7" index="0" unique_id=924093888]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_ngl01")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike7" index="1" unique_id=902102792]
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ja5ri")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2" unique_id=820029084]
+stream = ExtResource("3_ngl01")
+autoplay = true
+bus = &"Music"
+
+[node name="Platform2" parent="." index="3" unique_id=799007054 instance=ExtResource("4_wq170")]
+position = Vector2(576, 384)
+
+[node name="Floor" type="StaticBody2D" parent="." index="4" unique_id=266521159]
+position = Vector2(400, 0)
+collision_mask = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Floor" index="0" unique_id=787163003]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -560.0
+offset_top = 526.0
+offset_right = -260.0
+offset_bottom = 622.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("2_p0vsl")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Floor" index="1" unique_id=599117819]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 312.0
+offset_top = 526.0
+offset_right = 612.0
+offset_bottom = 622.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("2_p0vsl")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" index="2" unique_id=984984482]
+position = Vector2(-181, 588)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_gia0r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor" index="3" unique_id=1701069474]
+position = Vector2(533, 588)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_gia0r")
+
+[node name="Flag" parent="." index="8" unique_id=1568892423]
+position = Vector2(1117, 512)
+
+[node name="Player" parent="." index="9" unique_id=1203384558]
+TUTORIAL_TEXT = "Press L to go into lasso
+Mouse Left to draw
+Enter to confirm
+X to cancel"
+
+[connection signal="body_entered" from="Spikes/Spike" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike2" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike3" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike4" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike5" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike6" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Spikes/Spike7" to="." method="_on_spike_body_entered"]

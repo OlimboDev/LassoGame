@@ -5,6 +5,7 @@ extends State
 func physics_update(delta: float) -> void:
 	super.physics_update(delta)
 	if Input.is_action_pressed("sprint"):
+		pass
 		player.SPEED = player.SPRINT_SPEED
 	else:
 		player.SPEED = player.WALK_SPEED
@@ -15,4 +16,3 @@ func physics_update(delta: float) -> void:
 
 	if player.is_on_floor() and player.velocity.y >= 0:
 		state_machine.change_state(state_machine.idle_state)
-		return

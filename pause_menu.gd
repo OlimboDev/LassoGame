@@ -1,9 +1,6 @@
 extends Control
 
 @onready var setting_menu: Control = $"../SettingMenu"
-var is_respawning: bool = false
-
-
 
 func _ready() -> void:
 	hide()
@@ -11,7 +8,7 @@ func _ready() -> void:
 
 
 func _on_paused() -> void:
-	visible = get_tree().paused and not is_respawning
+	visible = get_tree().paused
 
 
 func _on_resume_button_pressed() -> void:

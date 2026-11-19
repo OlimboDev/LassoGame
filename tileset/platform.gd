@@ -13,12 +13,12 @@ extends StaticBody2D
 func _ready() -> void:
 	_apply_size()
 
-
 func _apply_size() -> void:
-	var shape := RectangleShape2D.new()
-	shape.size = size
-	shape_node.shape = shape
+	var new_shape: RectangleShape2D = RectangleShape2D.new()
+	new_shape.size = size
+	shape_node.shape = new_shape
 	shape_node.position = Vector2.ZERO
 	shape_node.scale = Vector2.ONE
+
 	nine_patch.size = size / nine_patch.scale
 	nine_patch.position = -size / 2.0

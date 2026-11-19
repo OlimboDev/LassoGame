@@ -1,41 +1,18 @@
 [gd_scene format=3 uid="uid://wtwnniixnpjt"]
 
 [ext_resource type="PackedScene" uid="uid://dkqxbudh17ine" path="res://levels/base_level.tscn" id="1_cg8v6"]
-[ext_resource type="Texture2D" uid="uid://dhv72qn2v6qhf" path="res://images/ezgif-47a2334abfcf5af4.png" id="2_j0sdw"]
-[ext_resource type="Texture2D" uid="uid://b5hfcmr3vk0ai" path="res://images/geode.png" id="3_jy02f"]
 [ext_resource type="Texture2D" uid="uid://crj1slq7csgm0" path="res://tileset/nature-paltformer-tileset-16x16.png" id="4_5dxk1"]
-[ext_resource type="PackedScene" uid="uid://ctstlrk3qkxq2" path="res://Player.tscn" id="5_kjd3d"]
-[ext_resource type="Texture2D" uid="uid://blg61nxuircvb" path="res://images/16-bit-spike-Sheet.png" id="7_j0sdw"]
 [ext_resource type="AudioStream" uid="uid://b11r7dmd1y6q4" path="res://Audio/Music/Bread.mp3" id="7_y72ps"]
-[ext_resource type="Texture2D" uid="uid://bgqn88dew2k13" path="res://images/flag animation.png" id="8_jy02f"]
-[ext_resource type="PackedScene" uid="uid://h1e4dfcb0kql" path="res://tileset/platform.tscn" id="9_jy02f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0npxl"]
-size = Vector2(565, 47)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja5ri"]
-size = Vector2(3.5, 8.125)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dxk1"]
-size = Vector2(19, 16.5625)
+size = Vector2(576, 60)
 
 [node name="BaseLevel" unique_id=1604495942 instance=ExtResource("1_cg8v6")]
 
-[node name="Sprites" type="Node2D" parent="." index="1" unique_id=549800861]
-position = Vector2(400, 0)
+[node name="Label" parent="CanvasLayer/MarginContainer" parent_id_path=PackedInt32Array(881057317) index="4" unique_id=1096316724]
+text = "Level 1: Casual Walk"
 
-[node name="Sprite1" type="Sprite2D" parent="Sprites" index="0" unique_id=965882900]
-visible = false
-position = Vector2(440, 440)
-scale = Vector2(0.26666668, 0.26666668)
-texture = ExtResource("2_j0sdw")
-
-[node name="Sprite2" type="Sprite2D" parent="Sprites" index="1" unique_id=691115147]
-visible = false
-position = Vector2(604, 359)
-texture = ExtResource("3_jy02f")
-
-[node name="Floor" type="StaticBody2D" parent="." index="2" unique_id=122433802]
+[node name="Floor" type="StaticBody2D" parent="." index="1" unique_id=122433802]
 position = Vector2(400, 0)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Floor" index="0" unique_id=1145199160]
@@ -45,10 +22,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -396.0
-offset_top = 526.0
-offset_right = 171.0
-offset_bottom = 574.0
+offset_left = -825.0
+offset_top = 525.0
+offset_right = 174.0
+offset_bottom = 621.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
@@ -63,196 +40,18 @@ axis_stretch_vertical = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" index="1" unique_id=1552945415]
-position = Vector2(171, 575)
+position = Vector2(176, 588)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_0npxl")
 
-[node name="Player" parent="." index="3" unique_id=1203384558 instance=ExtResource("5_kjd3d")]
-position = Vector2(573, 255)
-
-[node name="Spikes" type="Node" parent="." index="4" unique_id=470791340]
-
-[node name="Spike3" type="Area2D" parent="Spikes" index="0" unique_id=1912199728 groups=["platform"]]
-position = Vector2(277, 50)
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike3" index="0" unique_id=213359275]
-texture_filter = 1
-position = Vector2(-9.999998, 456.00003)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("7_j0sdw")
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike3" index="1" unique_id=1660441467]
-position = Vector2(-10.5, 467.125)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_ja5ri")
-
-[node name="Spike4" type="Area2D" parent="Spikes" index="1" unique_id=1242158774 groups=["platform"]]
-position = Vector2(237, 50)
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike4" index="0" unique_id=1439342081]
-texture_filter = 1
-position = Vector2(-9.999998, 456.00003)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("7_j0sdw")
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike4" index="1" unique_id=735499075]
-position = Vector2(-10.5, 467.125)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_ja5ri")
-
-[node name="Spike5" type="Area2D" parent="Spikes" index="2" unique_id=1507329960 groups=["platform"]]
-position = Vector2(197, 50)
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike5" index="0" unique_id=157783322]
-texture_filter = 1
-position = Vector2(-9.999998, 456.00003)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("7_j0sdw")
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike5" index="1" unique_id=1855186148]
-position = Vector2(-10.5, 467.125)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_ja5ri")
-
-[node name="Spike6" type="Area2D" parent="Spikes" index="3" unique_id=901441604 groups=["platform"]]
-position = Vector2(157, 50)
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike6" index="0" unique_id=1461771128]
-texture_filter = 1
-position = Vector2(-9.999998, 456.00003)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("7_j0sdw")
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike6" index="1" unique_id=1885603719]
-position = Vector2(-10.5, 467.125)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_ja5ri")
-
-[node name="Spike7" type="Area2D" parent="Spikes" index="4" unique_id=1139546360 groups=["platform"]]
-position = Vector2(117, 50)
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike7" index="0" unique_id=1974566133]
-texture_filter = 1
-position = Vector2(-9.999998, 456.00003)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("7_j0sdw")
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike7" index="1" unique_id=998984418]
-position = Vector2(-10.5, 467.125)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_ja5ri")
-
-[node name="Spike8" type="Area2D" parent="Spikes" index="5" unique_id=2006533117 groups=["platform"]]
-position = Vector2(77, 50)
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike8" index="0" unique_id=404100133]
-texture_filter = 1
-position = Vector2(-9.999998, 456.00003)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("7_j0sdw")
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike8" index="1" unique_id=1604308458]
-position = Vector2(-10.5, 467.125)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_ja5ri")
-
-[node name="Spike9" type="Area2D" parent="Spikes" index="6" unique_id=723934445 groups=["platform"]]
-position = Vector2(37, 50)
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike9" index="0" unique_id=358899149]
-texture_filter = 1
-position = Vector2(-9.999998, 456.00003)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("7_j0sdw")
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike9" index="1" unique_id=252418251]
-position = Vector2(-10.5, 467.125)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_ja5ri")
-
-[node name="Spike" type="Area2D" parent="Spikes" index="7" unique_id=593610495 groups=["platform"]]
-position = Vector2(357, 50)
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike" index="0" unique_id=1360030324]
-texture_filter = 1
-position = Vector2(-9.999998, 456.00003)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("7_j0sdw")
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike" index="1" unique_id=833100093]
-position = Vector2(-10.5, 467.125)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_ja5ri")
-
-[node name="Spike2" type="Area2D" parent="Spikes" index="8" unique_id=573390305 groups=["platform"]]
-position = Vector2(317, 50)
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike2" index="0" unique_id=1985438717]
-texture_filter = 1
-position = Vector2(-9.999998, 456.00003)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("7_j0sdw")
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Spike2" index="1" unique_id=134438186]
-position = Vector2(-10.5, 467.125)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_ja5ri")
-
-[node name="Flag" type="Area2D" parent="." index="5" unique_id=1859631692 groups=["platform"]]
-position = Vector2(400, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Flag" index="0" unique_id=1653767055]
-texture_filter = 1
-position = Vector2(-351, 357)
-scale = Vector2(0.60000014, 0.60000014)
-texture = ExtResource("8_jy02f")
-hframes = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag" index="1" unique_id=1980023129]
-position = Vector2(-360, 358)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_5dxk1")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="6" unique_id=820029084]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2" unique_id=820029084]
 position = Vector2(400, 0)
 stream = ExtResource("7_y72ps")
 autoplay = true
 bus = &"Music"
 
-[node name="Platform" parent="." index="8" unique_id=1652075062 instance=ExtResource("9_jy02f")]
-position = Vector2(167, 349)
+[node name="Flag" parent="." index="6" unique_id=1568892423]
+position = Vector2(1117, 511)
 
-[node name="Platform2" parent="." index="9" unique_id=1791230765 instance=ExtResource("9_jy02f")]
-position = Vector2(280, 421)
-
-[node name="Platform3" parent="." index="10" unique_id=1749997496 instance=ExtResource("9_jy02f")]
-position = Vector2(412, 429)
-
-[node name="Platform4" parent="." index="11" unique_id=1553626446 instance=ExtResource("9_jy02f")]
-position = Vector2(93, 263)
-
-[node name="Platform5" parent="." index="12" unique_id=1889656170 instance=ExtResource("9_jy02f")]
-position = Vector2(231, 249)
-
-[node name="Platform6" parent="." index="13" unique_id=1595469272 instance=ExtResource("9_jy02f")]
-position = Vector2(324, 311)
-
-[connection signal="body_entered" from="Spikes/Spike3" to="." method="_on_spike_body_entered"]
-[connection signal="body_entered" from="Spikes/Spike4" to="." method="_on_spike_body_entered"]
-[connection signal="body_entered" from="Spikes/Spike5" to="." method="_on_spike_body_entered"]
-[connection signal="body_entered" from="Spikes/Spike6" to="." method="_on_spike_body_entered"]
-[connection signal="body_entered" from="Spikes/Spike7" to="." method="_on_spike_body_entered"]
-[connection signal="body_entered" from="Spikes/Spike8" to="." method="_on_spike_body_entered"]
-[connection signal="body_entered" from="Spikes/Spike9" to="." method="_on_spike_body_entered"]
-[connection signal="body_entered" from="Spikes/Spike" to="." method="_on_spike_body_entered"]
-[connection signal="body_entered" from="Spikes/Spike2" to="." method="_on_spike_body_entered"]
-[connection signal="body_entered" from="Flag" to="." method="_on_flag_body_entered"]
+[node name="Player" parent="." index="7" unique_id=1203384558]
+TUTORIAL_TEXT = "A/D to walk"
